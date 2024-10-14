@@ -113,7 +113,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &8361347896787920373
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -163,6 +163,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   killLemmiTimer: 3
-  currentTimer: 0
+  coyoteTimeDuration: 0.5
   grounded: 0
   walled: 0
