@@ -11,6 +11,8 @@ TagManager:
   - 
   - Water
   - UI
+  - Floor
+  - Wall
   - 
   - 
   - 
@@ -20,9 +22,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Lemming
   - 
   - 
   - 

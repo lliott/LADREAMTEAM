@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7783818845324681385}
   - component: {fileID: 1434682432877460014}
   - component: {fileID: 8361347896787920373}
+  - component: {fileID: -3980379674732063557}
   m_Layer: 17
   m_Name: Lemming(temp)
   m_TagString: Untagged
@@ -148,3 +149,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.98, y: 3.03}
   m_Direction: 0
+--- !u!114 &-3980379674732063557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283240314172663801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138c16621e855794aa1d282eeb6ba13b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  killLemmiTimer: 3
+  currentTimer: 0
+  grounded: 0
+  walled: 0
