@@ -11,7 +11,7 @@ public class LemmingController : MonoBehaviour
     [SerializeField] private float coyoteTimeDuration = 0.5f;
     private float coyoteTimeCounter = 0f;
 
-    [Header("public values")]
+    [Header("Public Values")]
     public bool grounded = false;
     public bool walled = false;
     private bool movingRight = true;
@@ -19,6 +19,7 @@ public class LemmingController : MonoBehaviour
     private int Floor;
     private int Wall;
     private SpriteRenderer spriteRenderer;
+    private Vector3 moveDirection = Vector3.zero;
 
     void Start()
     {
@@ -31,13 +32,17 @@ public class LemmingController : MonoBehaviour
     private void Update()
     {
         KillLemmiOhNo();
-        MoveLemming();
-        FlipLemming();
 
         if (coyoteTimeCounter > 0f)
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        MoveLemming();
+        FlipLemming();
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -51,10 +56,10 @@ public class LemmingController : MonoBehaviour
         if (col.gameObject.layer == Wall)
         {
             walled = true;
-            ChangeDirection();
         }
     }
-    void OnCollisionExit2D(Collision2D col)
+
+    private void OnCollisionExit2D(Collision2D col)
     {
         if (col.gameObject.layer == Floor)
         {
@@ -72,14 +77,10 @@ public class LemmingController : MonoBehaviour
     {
         if (grounded || coyoteTimeCounter > 0f)
         {
-            if (movingRight)
-            {
-                this.gameObject.transform.position += new Vector3(speed * Time.deltaTime, 0, 0); // Move right
-            }
-            else
-            {
-                this.gameObject.transform.position += new Vector3(-speed * Time.deltaTime, 0, 0); // Move left
-            }
+            // movement direction is based on : moving right or left
+            moveDirection.Set(movingRight ? speed * Time.fixedDeltaTime : -speed * Time.fixedDeltaTime, 0, 0);
+
+            transform.position += moveDirection;
         }
     }
 
@@ -90,16 +91,7 @@ public class LemmingController : MonoBehaviour
 
     private void FlipLemming()
     {
-        if (movingRight)
-        {
-            spriteRenderer.flipX = false;
-
-        }
-        else
-        {
-
-            spriteRenderer.flipX = true;
-        }
+        spriteRenderer.flipX = !movingRight;
     }
 
     private void KillLemmiOhNo()
@@ -115,9 +107,8 @@ public class LemmingController : MonoBehaviour
 
         if (currentTimerCounter > killLemmiTimer)
         {
+            // Instead of destroying, you can implement object pooling here
             Destroy(gameObject);
         }
     }
-
-
 }
