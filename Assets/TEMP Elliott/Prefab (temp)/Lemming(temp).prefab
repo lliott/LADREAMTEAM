@@ -147,7 +147,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.98, y: 3.03}
+  m_Size: {x: 1.13, y: 2.04}
   m_Direction: 0
 --- !u!114 &-3980379674732063557
 MonoBehaviour:
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138c16621e855794aa1d282eeb6ba13b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   killLemmiTimer: 3
   coyoteTimeDuration: 0.5
   grounded: 0
