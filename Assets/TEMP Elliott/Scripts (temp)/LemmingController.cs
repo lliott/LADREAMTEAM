@@ -31,7 +31,7 @@ public class LemmingController : MonoBehaviour
 
     private void Update()
     {
-        KillLemmiOhNo();
+        KillLemmiCondition();
 
         if (coyoteTimeCounter > 0f)
         {
@@ -94,7 +94,7 @@ public class LemmingController : MonoBehaviour
         spriteRenderer.flipX = !movingRight;
     }
 
-    private void KillLemmiOhNo()
+    private void KillLemmiCondition()
     {
         if (!grounded)
         {
@@ -107,8 +107,13 @@ public class LemmingController : MonoBehaviour
 
         if (currentTimerCounter > killLemmiTimer)
         {
-            // Instead of destroying, you can implement object pooling here
-            Destroy(gameObject);
+            KillLemmi();
         }
     }
+    public void KillLemmi()
+    {
+        gameObject.SetActive(false);
+    }
+
+
 }

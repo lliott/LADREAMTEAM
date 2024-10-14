@@ -27,6 +27,6 @@ public class LemmingCreator : MonoBehaviour
     {
         Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y + offsetY, transform.position.z);
 
-        Instantiate(lemming, spawnPosition, Quaternion.identity);
+        LemmingPooler.Instance.SpawnFromPool("Lemming", spawnPosition, Quaternion.identity);
     }
 }
