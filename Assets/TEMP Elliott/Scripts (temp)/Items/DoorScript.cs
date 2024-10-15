@@ -26,36 +26,43 @@ public class DoorButton : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        numberOfLemmingsOnButton++;
-
-        if (numberOfLemmingsOnButton == lemmingsNeeded)
+        if (collision.gameObject.CompareTag("Lemming"))
         {
-            if (releaseButtonCoroutine != null)
-            {
-                StopCoroutine(releaseButtonCoroutine);
-                releaseButtonCoroutine = null;
-            }
+            numberOfLemmingsOnButton++;
 
-            StartCoroutine(PressButton());
+            if (numberOfLemmingsOnButton == lemmingsNeeded)
+            {
+                if (releaseButtonCoroutine != null)
+                {
+                    StopCoroutine(releaseButtonCoroutine);
+                    releaseButtonCoroutine = null;
+                }
+
+                StartCoroutine(PressButton());
+            }
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        numberOfLemmingsOnButton--;
-
-        if (numberOfLemmingsOnButton < 0)
+        if (collision.gameObject.CompareTag("Lemming"))
         {
-            numberOfLemmingsOnButton = 0;
-        }
+            numberOfLemmingsOnButton--;
 
-        if (numberOfLemmingsOnButton < lemmingsNeeded)
-        {
-            if (releaseButtonCoroutine == null)
+            if (numberOfLemmingsOnButton < 0)
             {
-                releaseButtonCoroutine = StartCoroutine(DelayedReleaseButton());
+                numberOfLemmingsOnButton = 0;
+            }
+
+            if (numberOfLemmingsOnButton < lemmingsNeeded)
+            {
+                if (releaseButtonCoroutine == null)
+                {
+                    releaseButtonCoroutine = StartCoroutine(DelayedReleaseButton());
+                }
             }
         }
+
     }
 
     private IEnumerator PressButton()
