@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GoldenController : MonoBehaviour
 {
+    public bool canBuy;
     [SerializeField] private int price;
     [SerializeField] private Text _textPrice;
 
@@ -17,6 +18,11 @@ public class GoldenController : MonoBehaviour
         GoldenManagement.instance.MinusGolden(price);
     }
 
-   
+   public bool CanBuy(){
+    if(GoldenManagement.instance.currentCoins >= price){
+        return true;
+    }
+    return false;
+   }
 
 }

@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class GoldenManagement : MonoBehaviour
 {
     public static GoldenManagement instance;
+    
     [SerializeField] private Text _textCurrentCoins;
+
     [SerializeField] private int _initCoins = 50;
-    private int _currentCoins;
+    public int currentCoins;
 
     private void Awake()
     {
@@ -22,20 +24,27 @@ public class GoldenManagement : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        _currentCoins = _initCoins;
+        currentCoins = _initCoins;
         _UpdateUI();
     }
 
+    void Update(){
+        
+    }
+
     public void MinusGolden(int golden){
-        _currentCoins -= golden;
+        currentCoins -= golden;
         _UpdateUI();
     }
 
     private void _UpdateUI(){
-        _textCurrentCoins.text = "coins :" + _currentCoins;
+        if(currentCoins<=0){
+            _textCurrentCoins.text = "coins : 0" ;
+        } else{
+            _textCurrentCoins.text = "coins :" + currentCoins;
+        }
     }
 
 }
