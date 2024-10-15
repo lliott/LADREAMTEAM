@@ -14,14 +14,21 @@ public class Slot : MonoBehaviour, IPointerDownHandler
     _goldController = GetComponent<GoldenController>();
   }
 
+  void Update(){ //Opti?
+    if(_goldController.CanBuy()){
+        //couleur
+        GetComponent<Image>().color = Color.white;
+    }else{
+      //couleur
+      GetComponent<Image>().color = Color.red;
+    }
+  }
+
 //Drag
   public void OnPointerDown(PointerEventData eventData)
   {
     if(_goldController.CanBuy())
     {
-      //couleur
-      GetComponent<Image>().color = Color.white;
-
       //produce object
       GameObject instantiatedObject = Instantiate(objectPrefab, transform.localPosition, Quaternion.identity);
       instantiatedObject.transform.SetParent(objectPrefab.transform.parent);
@@ -34,9 +41,6 @@ public class Slot : MonoBehaviour, IPointerDownHandler
     } 
     else{
       Debug.Log("peut pas acheter " + objectPrefab.name);
-      
-      //couleur
-      GetComponent<Image>().color = Color.red;
     }
   }
 
