@@ -1503,8 +1503,12 @@ PrefabInstance:
       value: Button
       objectReference: {fileID: 0}
     - target: {fileID: 2307054620328159882, guid: ed1ff7441c9a9d044b51283b6465d7ba, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.1777625
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307054620328159882, guid: ed1ff7441c9a9d044b51283b6465d7ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.58
+      value: -11.1656
       objectReference: {fileID: 0}
     - target: {fileID: 2307054620328159882, guid: ed1ff7441c9a9d044b51283b6465d7ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1546,6 +1550,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 1769234527}
+    - target: {fileID: 5532946084426625899, guid: ed1ff7441c9a9d044b51283b6465d7ba, type: 3}
+      propertyPath: lemmingsNeeded
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
