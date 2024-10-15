@@ -32,8 +32,9 @@ public class DragHandler : MonoBehaviour
         if (isDragging && draggedObject != null)
         {
             //suit souris
-            RectTransform rectTransform = draggedObject.GetComponent<RectTransform>();
-            rectTransform.position = Input.mousePosition;
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorldPosition.z = 0; 
+            draggedObject.GetComponent<Transform>().position = mouseWorldPosition;
 
             //drop
             if (Input.GetMouseButtonUp(0))
