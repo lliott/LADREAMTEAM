@@ -12,9 +12,9 @@ public class LemmingController : MonoBehaviour
     private float coyoteTimeCounter = 0f;
 
     [Header("Ground Detection")]
-    [SerializeField] private float groundCheckDistance = 0.3f;  // Increase the distance to ensure ground detection
-    [SerializeField] private LayerMask groundLayerMask;         // LayerMask for "Floor" and "Button" layers
-    [SerializeField] private Transform groundCheckPosition;     // Add a position to cast the ray from (feet)
+    [SerializeField] private float groundCheckDistance = 0.3f;
+    [SerializeField] private LayerMask groundLayerMask;
+    [SerializeField] private Transform groundCheckPosition;
     public bool grounded = false;
     private bool wasGrounded = false;
 
@@ -49,7 +49,7 @@ public class LemmingController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckIfGrounded();   // Perform the raycast to check if grounded
+        CheckIfGrounded();
         MoveLemming();
         FlipLemming();
     }
@@ -81,7 +81,6 @@ public class LemmingController : MonoBehaviour
         if (col.gameObject.layer == Wall)
         {
             walled = true;
-            Debug.Log("Lemming hit a wall: " + col.gameObject.name);  // Debug wall collision
         }
     }
 
@@ -103,10 +102,8 @@ public class LemmingController : MonoBehaviour
 
         if (grounded || (!grounded && coyoteTimeCounter > 0f))
         {
-            // Movement direction is based on whether the Lemming is moving right or left
             moveDirection.Set(movingRight ? speed * Time.fixedDeltaTime : -speed * Time.fixedDeltaTime, 0, 0);
 
-            // Move the Lemming in the calculated direction
             transform.position += moveDirection;
         } else
         {
