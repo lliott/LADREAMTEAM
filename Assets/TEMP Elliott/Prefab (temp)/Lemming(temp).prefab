@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138c16621e855794aa1d282eeb6ba13b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  killLemmiTimer: 3
+  speed: 2
+  killLemmiTimer: 99
   coyoteTimeDuration: 0.5
   grounded: 0
   walled: 0

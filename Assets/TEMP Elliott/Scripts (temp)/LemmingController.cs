@@ -29,6 +29,11 @@ public class LemmingController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    private void OnEnable()
+    {
+        movingRight = true;
+    }
+
     private void Update()
     {
         KillLemmiCondition();
