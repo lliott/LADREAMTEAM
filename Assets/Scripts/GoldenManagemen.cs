@@ -7,10 +7,11 @@ public class GoldenManagement : MonoBehaviour
 {
     public static GoldenManagement instance;
     
+    [HideInInspector] public int currentCoins;
+    
     [SerializeField] private Text _textCurrentCoins;
 
     [SerializeField] private int _initCoins = 50;
-    public int currentCoins;
 
     private void Awake()
     {

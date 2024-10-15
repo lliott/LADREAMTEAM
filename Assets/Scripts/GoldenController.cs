@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class GoldenController : MonoBehaviour
 {
-    public bool canBuy;
+    [HideInInspector] public bool canBuy;
     [SerializeField] private int price;
-    [SerializeField] private Text _textPrice;
+    private Text _textPrice;
 
      void Start(){
+        _textPrice = GetComponentInChildren<Text>();
         _textPrice.text = price.ToString();
     }
 
