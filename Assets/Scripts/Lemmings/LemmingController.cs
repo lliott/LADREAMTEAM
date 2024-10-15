@@ -25,6 +25,7 @@ public class LemmingController : MonoBehaviour
     public bool walled = false;
     private int wallSide;
 
+    private Collider2D lemmingCollider;
     private bool movingRight = true;
     private SpriteRenderer spriteRenderer;
     private Vector3 moveDirection = Vector3.zero;
@@ -32,6 +33,7 @@ public class LemmingController : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        lemmingCollider = GetComponent<Collider2D>();
     }
 
     private void OnEnable()
@@ -52,9 +54,10 @@ public class LemmingController : MonoBehaviour
     private void FixedUpdate()
     {
         CheckIfGrounded();
-        CheckIfWalled(); // Call the method here
+        CheckIfWalled();
         MoveLemming();
         FlipLemming();
+        ResolveCollisions();
     }
 
     private void CheckIfGrounded()
@@ -83,7 +86,7 @@ public class LemmingController : MonoBehaviour
     {
         Vector2[] directions = { Vector2.left, Vector2.right };
 
-        walled = false; // Update walled directly
+        walled = false;
 
         foreach (Vector2 direction in directions)
         {
@@ -93,20 +96,15 @@ public class LemmingController : MonoBehaviour
 
             if (hit.collider != null)
             {
-                walled = true; // Update walled
+                walled = true;
 
                 wallSide = direction == Vector2.left ? -1 : 1;
                 break;
             }
         }
-
-        if (!walled)
-        {
-            wallSide = 0; // Not touching any wall
-        }
     }
 
-    private void MoveLemming()
+        private void MoveLemming()
     {
         if (walled)
         {
@@ -126,6 +124,28 @@ public class LemmingController : MonoBehaviour
         }
     }
 
+    private void ResolveCollisions()
+    {
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.layerMask = wallLayerMask;
+        contactFilter.useLayerMask = true;
+
+        List<Collider2D> overlappingColliders = new List<Collider2D>();
+        int overlapCount = lemmingCollider.OverlapCollider(contactFilter, overlappingColliders);
+
+        foreach (Collider2D wallCollider in overlappingColliders)
+        {
+            ColliderDistance2D colliderDistance = lemmingCollider.Distance(wallCollider);
+
+            if (colliderDistance.isOverlapped)
+            {
+                Vector2 separationVector = colliderDistance.normal * colliderDistance.distance;
+                transform.position += (Vector3)separationVector;
+            }
+        }
+    }
+
+
     private void ChangeDirection()
     {
         movingRight = !movingRight;
@@ -133,7 +153,7 @@ public class LemmingController : MonoBehaviour
 
     private void FlipLemming()
     {
-        spriteRenderer.flipX = !movingRight;
+        transform.rotation = movingRight ? Quaternion.identity : Quaternion.Euler(0f, 180f, 0f);
     }
 
     private void KillLemmiCondition()
