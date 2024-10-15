@@ -18,17 +18,19 @@ public class LemmingController : MonoBehaviour
     public bool grounded = false;
     private bool wasGrounded = false;
 
-    [Header("Public Values")]
+    [Header("Wall Detection")]
+    [SerializeField] private float wallCheckDistance = 0.3f;
+    [SerializeField] private LayerMask wallLayerMask;
+    [SerializeField] private Transform wallCheckPosition;
     public bool walled = false;
-    private bool movingRight = true;
+    private int wallSide;
 
-    private int Wall;
+    private bool movingRight = true;
     private SpriteRenderer spriteRenderer;
     private Vector3 moveDirection = Vector3.zero;
 
     void Start()
     {
-        Wall = LayerMask.NameToLayer("Wall");
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -50,6 +52,7 @@ public class LemmingController : MonoBehaviour
     private void FixedUpdate()
     {
         CheckIfGrounded();
+        CheckIfWalled(); // Call the method here
         MoveLemming();
         FlipLemming();
     }
@@ -64,9 +67,9 @@ public class LemmingController : MonoBehaviour
         {
             grounded = true;
             coyoteTimeCounter = 0f;
-        }
-        else
-        {
+
+        } else {
+
             grounded = false;
             if (wasGrounded)
             {
@@ -76,19 +79,30 @@ public class LemmingController : MonoBehaviour
         wasGrounded = grounded;
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void CheckIfWalled()
     {
-        if (col.gameObject.layer == Wall)
-        {
-            walled = true;
-        }
-    }
+        Vector2[] directions = { Vector2.left, Vector2.right };
 
-    private void OnCollisionExit2D(Collision2D col)
-    {
-        if (col.gameObject.layer == Wall)
+        walled = false; // Update walled directly
+
+        foreach (Vector2 direction in directions)
         {
-            walled = false;
+            RaycastHit2D hit = Physics2D.Raycast(wallCheckPosition.position, direction, wallCheckDistance, wallLayerMask);
+
+            Debug.DrawRay(wallCheckPosition.position, direction * wallCheckDistance, Color.blue);
+
+            if (hit.collider != null)
+            {
+                walled = true; // Update walled
+
+                wallSide = direction == Vector2.left ? -1 : 1;
+                break;
+            }
+        }
+
+        if (!walled)
+        {
+            wallSide = 0; // Not touching any wall
         }
     }
 
@@ -105,8 +119,9 @@ public class LemmingController : MonoBehaviour
             moveDirection.Set(movingRight ? speed * Time.fixedDeltaTime : -speed * Time.fixedDeltaTime, 0, 0);
 
             transform.position += moveDirection;
-        } else
-        {
+
+        } else {
+
             return;
         }
     }
@@ -126,9 +141,9 @@ public class LemmingController : MonoBehaviour
         if (!grounded)
         {
             currentTimerCounter += Time.deltaTime;
-        }
-        else
-        {
+
+        } else {
+
             currentTimerCounter = 0f;
         }
 
