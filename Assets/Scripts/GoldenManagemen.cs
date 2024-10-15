@@ -31,12 +31,13 @@ public class GoldenManagement : MonoBehaviour
         _UpdateUI();
     }
 
-    void Update(){
-        
+    public void MinusGolds(int golds){
+        currentCoins -= golds;
+        _UpdateUI();
     }
 
-    public void MinusGolden(int golden){
-        currentCoins -= golden;
+    public void IncreaseGolds(int golds){
+        currentCoins += golds;
         _UpdateUI();
     }
 

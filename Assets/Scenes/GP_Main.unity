@@ -728,9 +728,10 @@ GameObject:
   - component: {fileID: 547250006}
   - component: {fileID: 547250008}
   - component: {fileID: 547250007}
+  - component: {fileID: 547250009}
   m_Layer: 0
   m_Name: CobbleBloc
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -744,7 +745,7 @@ Transform:
   m_GameObject: {fileID: 547250005}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1072, y: -456, z: 5.88107}
+  m_LocalPosition: {x: -1114.9, y: -508.4, z: 5.88107}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -847,6 +848,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &547250009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547250005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329707e36a47d764fa220bfcecbc614f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &582920322
 GameObject:
   m_ObjectHideFlags: 0
@@ -3429,7 +3442,7 @@ SceneRoots:
   - {fileID: 1316308914}
   - {fileID: 734273843}
   - {fileID: 2014761415}
-  - {fileID: 776405473}
   - {fileID: 1111604273}
   - {fileID: 1064559073}
   - {fileID: 488807663}
+  - {fileID: 776405473}

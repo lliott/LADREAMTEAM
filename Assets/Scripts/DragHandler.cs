@@ -44,7 +44,7 @@ public class DragHandler : MonoBehaviour
         }
     }
 
-    public void StopDragging()
+    void StopDragging()
     {
         isDragging = false;
         draggedObject = null;
