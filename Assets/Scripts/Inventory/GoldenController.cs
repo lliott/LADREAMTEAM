@@ -16,7 +16,7 @@ public class GoldenController : MonoBehaviour
 
 
     public void PayObject(){
-        GoldenManagement.instance.MinusGolden(price);
+        GoldenManagement.instance.MinusGolds(price);
     }
 
    public bool CanBuy(){

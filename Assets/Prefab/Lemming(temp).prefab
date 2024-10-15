@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 1434682432877460014}
   - component: {fileID: 8361347896787920373}
   - component: {fileID: -3980379674732063557}
+  - component: {fileID: -6296755950531413189}
   m_Layer: 17
   m_Name: Lemming(temp)
   m_TagString: Lemming
@@ -240,3 +241,15 @@ MonoBehaviour:
     m_Bits: 192
   wallCheckPosition: {fileID: 1397933894079035303}
   walled: 0
+--- !u!114 &-6296755950531413189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283240314172663801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329707e36a47d764fa220bfcecbc614f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

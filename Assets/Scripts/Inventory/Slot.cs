@@ -31,8 +31,10 @@ public class Slot : MonoBehaviour, IPointerDownHandler
 
       //Drag
       DragHandler.instance.StartDragging(instantiatedObject);
-    } else{
+    } 
+    else{
       Debug.Log("peut pas acheter " + objectPrefab.name);
+      
       //couleur
       GetComponent<Image>().color = Color.red;
     }
