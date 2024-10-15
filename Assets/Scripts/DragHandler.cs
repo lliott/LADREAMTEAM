@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class DragHandler : MonoBehaviour
 {
-    public static DragHandler Instance;
+    public static DragHandler instance;
 
     private GameObject draggedObject;
     private bool isDragging = false;
 
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
         }
         else
         {
@@ -25,10 +25,6 @@ public class DragHandler : MonoBehaviour
     {
         draggedObject = objectToDrag;
         isDragging = true;
-
-        // init
-        RectTransform rectTransform = draggedObject.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = Input.mousePosition;
     }
 
     void Update()
