@@ -36,15 +36,27 @@ public class DragHandler : MonoBehaviour
             mouseWorldPosition.z = 0; 
             draggedObject.GetComponent<Transform>().position = mouseWorldPosition;
 
+            //Desactive le collider
+            if (draggedObject.TryGetComponent<BoxCollider2D>(out BoxCollider2D coll))
+            {
+                coll.enabled = false;
+            }
+
             //drop
             if (Input.GetMouseButtonUp(0))
             {
                 StopDragging();
+
+                //Active le collider
+                if (coll!=null)
+                {
+                    coll.enabled = true;
+                }
             }
         }
     }
 
-    public void StopDragging()
+    void StopDragging()
     {
         isDragging = false;
         draggedObject = null;
