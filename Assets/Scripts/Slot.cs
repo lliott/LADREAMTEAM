@@ -1,28 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour, IPointerDownHandler
 {
     public GameObject objectPrefab; 
     private GameObject currentDraggedObject;
+    private GoldenController _goldController;
 
+  void Start(){
+    _goldController = GetComponent<GoldenController>();
+  }
+
+//Drag
   public void OnPointerDown(PointerEventData eventData)
-{
-    GameObject instantiatedObject = Instantiate(objectPrefab, transform.position, Quaternion.identity);
+  {
+    if(_goldController.CanBuy())
+    {
+      //couleur
+      GetComponent<Image>().color = Color.white;
 
-    instantiatedObject.transform.SetParent(transform.parent);
+      //produce object
+      GameObject instantiatedObject = Instantiate(objectPrefab, transform.localPosition, Quaternion.identity);
+      instantiatedObject.transform.SetParent(objectPrefab.transform.parent);
 
-    instantiatedObject.transform.localPosition = Vector3.zero;
+      //dim golden
+      _goldController.PayObject();
 
-    DragHandler.Instance.StartDragging(instantiatedObject);
-}
-
-
-
-
-
+      //Drag
+      DragHandler.instance.StartDragging(instantiatedObject);
+    } else{
+      Debug.Log("peut pas acheter " + objectPrefab.name);
+      //couleur
+      GetComponent<Image>().color = Color.red;
+    }
+  }
 
 
 }
