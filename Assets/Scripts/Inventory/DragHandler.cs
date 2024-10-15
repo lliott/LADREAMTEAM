@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DragHandler : MonoBehaviour
 {
     public static DragHandler instance;
+    [SerializeField] private RectTransform zone; // zone où le drop possible
 
     private GameObject draggedObject;
     private bool isDragging = false;
 
-    private void Awake()
+    private void Start()
     {
         if (instance == null)
         {
@@ -18,6 +20,10 @@ public class DragHandler : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+
+        if(zone==null){
+            zone = transform.parent.GetComponent<RectTransform>();
         }
     }
 
@@ -31,7 +37,7 @@ public class DragHandler : MonoBehaviour
     {
         if (isDragging && draggedObject != null)
         {
-            //suit souris
+            //suit souris par rapport au world
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorldPosition.z = 0; 
             draggedObject.GetComponent<Transform>().position = mouseWorldPosition;
@@ -42,8 +48,12 @@ public class DragHandler : MonoBehaviour
                 coll.enabled = false;
             }
 
-            //drop
-            if (Input.GetMouseButtonUp(0))
+            //converti position world en screen
+            Vector2 mouseScreenPosition = Input.mousePosition;
+
+            //drop dans la zone
+            if (Input.GetMouseButtonUp(0)
+               && (RectTransformUtility.RectangleContainsScreenPoint(zone, mouseScreenPosition)))
             {
                 StopDragging();
 
@@ -53,8 +63,11 @@ public class DragHandler : MonoBehaviour
                     coll.enabled = true;
                 }
             }
+            else{
+                Debug.Log("ne pas pas etre deposé hors zone"); //voir la condition
+            }
         }
-    }
+    }    
 
     void StopDragging()
     {
