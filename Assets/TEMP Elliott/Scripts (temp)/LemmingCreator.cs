@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LemmingCreator : MonoBehaviour
 {
-    [SerializeField] private GameObject lemming;
     [SerializeField] private float spawnInterval = 1f;
     [SerializeField] float offsetY = -1f;
 

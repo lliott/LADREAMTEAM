@@ -82,6 +82,11 @@ public class LemmingController : MonoBehaviour
 
             transform.position += moveDirection;
         }
+        if (walled)
+        {
+            ChangeDirection();
+            walled = false;
+        }
     }
 
     private void ChangeDirection()
