@@ -26,7 +26,7 @@ public class DragHandler : MonoBehaviour
         draggedObject = objectToDrag;
         isDragging = true;
 
-        // Set the position to the mouse position when starting the drag
+        // init
         RectTransform rectTransform = draggedObject.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = Input.mousePosition;
     }
@@ -35,11 +35,11 @@ public class DragHandler : MonoBehaviour
     {
         if (isDragging && draggedObject != null)
         {
-            // Follow the mouse position directly
+            //suit souris
             RectTransform rectTransform = draggedObject.GetComponent<RectTransform>();
             rectTransform.position = Input.mousePosition;
 
-            // Stop dragging
+            //drop
             if (Input.GetMouseButtonUp(0))
             {
                 StopDragging();
