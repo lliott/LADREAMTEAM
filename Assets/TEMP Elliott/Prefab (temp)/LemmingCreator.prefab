@@ -99,8 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae6fafa2b7f21e46841212d43e61fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lemming: {fileID: 7283240314172663801, guid: 9d0c9052806454c4cb2cdf94302c9a98, type: 3}
-  spawnInterval: 1
+  spawnInterval: 0.1
   offsetY: -1
 --- !u!1 &5198593364807097376
 GameObject:

@@ -6,6 +6,7 @@ public class LemmingCreator : MonoBehaviour
 {
     [SerializeField] private float spawnInterval = 1f;
     [SerializeField] float offsetY = -1f;
+    public bool isActivated = true;
 
     private void Start()
     {
@@ -14,7 +15,7 @@ public class LemmingCreator : MonoBehaviour
 
     IEnumerator SpawnLoop()
     {
-        while (true)
+        while (true && isActivated)
         {
             yield return new WaitForSeconds(spawnInterval);
 
