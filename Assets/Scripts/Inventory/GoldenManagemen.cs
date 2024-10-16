@@ -12,6 +12,8 @@ public class GoldenManagement : MonoBehaviour
     [SerializeField] private Text _textCurrentCoins;
 
     [SerializeField] private int _initCoins = 50;
+    
+    private AudioSource[] _audio = new AudioSource[4];
 
     private void Awake()
     {
@@ -29,16 +31,22 @@ public class GoldenManagement : MonoBehaviour
     {
         currentCoins = _initCoins;
         _UpdateUI();
+
+        _audio = GetComponents<AudioSource>();
     }
 
     public void MinusGolds(int golds){
         currentCoins -= golds;
         _UpdateUI();
+
+        _audio[0].Play();
     }
 
     public void IncreaseGolds(int golds){
         currentCoins += golds;
         _UpdateUI();
+
+        _audio[1].Play();
     }
 
     private void _UpdateUI(){
