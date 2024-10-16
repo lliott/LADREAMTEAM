@@ -143,3 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 329707e36a47d764fa220bfcecbc614f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldPercentIncrease: 50
+  objectPrice: 100
