@@ -69,9 +69,6 @@ public class DragHandler : MonoBehaviour
                     coll.enabled = true;
                 }
             }
-            else{
-                Debug.Log("ne pas pas etre deposé hors zone"); //voir la condition
-            }
         }
     }    
 
