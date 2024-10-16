@@ -8,7 +8,7 @@ public class DragHandler : MonoBehaviour
     public static DragHandler instance;
     [SerializeField] private RectTransform zone; // zone où le drop possible
 
-    private GameObject draggedObject;
+    [HideInInspector] public GameObject draggedObject { get; private set; }
     private bool isDragging = false;
 
     private void Start()
@@ -49,7 +49,7 @@ public class DragHandler : MonoBehaviour
             draggedObject.GetComponent<Transform>().position = mouseWorldPosition;
 
             //Desactive le collider
-            if (draggedObject.TryGetComponent<BoxCollider2D>(out BoxCollider2D coll))
+            if (draggedObject.TryGetComponent<Collider2D>(out Collider2D coll))
             {
                 coll.enabled = false;
             }

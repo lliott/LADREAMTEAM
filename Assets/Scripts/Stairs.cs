@@ -14,7 +14,7 @@ public class Stairs : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+        if ((DragHandler.instance.draggedObject == gameObject) && (Input.GetAxis("Mouse ScrollWheel") != 0f))
         {
             scaleX = -scaleX;
             transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
@@ -48,6 +48,13 @@ public class Stairs : MonoBehaviour
             {
                 Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>(), true); // ignore collision
             }
+        }
+        //Bloquer l escalier qd il touche le sol, escaliers
+        if ((collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+            ||collision.gameObject.layer == LayerMask.NameToLayer("Stairs"))
+        {
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll; 
+            Debug.Log("Y position frozen on Floor collision");
         }
     }
 
