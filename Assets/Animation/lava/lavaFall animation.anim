@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: lava animation
+  m_Name: lavaFall animation
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: fa6702ab72ece6c478691f21333b9a76, type: 3}
+      value: {fileID: 21300000, guid: 2ad3789814c463c409d814c8cc770698, type: 3}
     - time: 0.125
-      value: {fileID: 21300000, guid: 4b69e40bf7b7ebf4ab2b282744f46af3, type: 3}
+      value: {fileID: 21300000, guid: ee8711f8f9b559848953282927c7edf1, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: dc66f531940bc6f4283058234c3a17f7, type: 3}
+      value: {fileID: 21300000, guid: 00df365c0285f554f8914ad4e4282248, type: 3}
     - time: 0.375
-      value: {fileID: 21300000, guid: 2aa46293b9bcf594981d1ea82dd5626b, type: 3}
+      value: {fileID: 21300000, guid: 03c0cb02f1f9a104c84ecc291a16d3dc, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,10 +50,10 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: fa6702ab72ece6c478691f21333b9a76, type: 3}
-    - {fileID: 21300000, guid: 4b69e40bf7b7ebf4ab2b282744f46af3, type: 3}
-    - {fileID: 21300000, guid: dc66f531940bc6f4283058234c3a17f7, type: 3}
-    - {fileID: 21300000, guid: 2aa46293b9bcf594981d1ea82dd5626b, type: 3}
+    - {fileID: 21300000, guid: 2ad3789814c463c409d814c8cc770698, type: 3}
+    - {fileID: 21300000, guid: ee8711f8f9b559848953282927c7edf1, type: 3}
+    - {fileID: 21300000, guid: 00df365c0285f554f8914ad4e4282248, type: 3}
+    - {fileID: 21300000, guid: 03c0cb02f1f9a104c84ecc291a16d3dc, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
