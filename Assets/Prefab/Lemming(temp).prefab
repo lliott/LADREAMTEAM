@@ -228,7 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   killLemmiTimer: 99
-  coyoteTimeDuration: 0.5
+  coyoteTimeDuration: 0.05
   groundCheckDistance: 0.3
   groundLayerMask:
     serializedVersion: 2
@@ -240,7 +240,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   wallCheckPosition: {fileID: 1397933894079035303}
-  wallCheckPosition2: {fileID: 0}
   walled: 0
 --- !u!114 &-6296755950531413189
 MonoBehaviour:
