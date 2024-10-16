@@ -17,6 +17,7 @@ public class Destructible : MonoBehaviour
 
             }else if(CompareTag("Lemming")){
                 gameObject.SetActive(false); //crane qui roule
+                //ELLIOTt C ICI QUI FAUT ADD MERCE
             }
         }
     }

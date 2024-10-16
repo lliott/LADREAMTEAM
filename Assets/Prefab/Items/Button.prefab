@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1451326931247849235}
   - component: {fileID: 200900112382754082}
   - component: {fileID: 5532946084426625899}
+  - component: {fileID: -6468697493050981183}
   m_Layer: 8
   m_Name: Button
   m_TagString: Untagged
@@ -176,3 +177,17 @@ MonoBehaviour:
   buttonPressDistance: -0.1
   delayAfterLastLemmingLeaves: 0.5
   lemmingsNeeded: 1
+--- !u!114 &-6468697493050981183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722583723256498362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329707e36a47d764fa220bfcecbc614f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldPercentIncrease: 50
+  objectPrice: 80
