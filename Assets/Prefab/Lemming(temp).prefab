@@ -228,7 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   killLemmiTimer: 99
-  coyoteTimeDuration: 0.05
+  coyoteTimeDuration: 0.3
   groundCheckDistance: 0.3
   groundLayerMask:
     serializedVersion: 2
