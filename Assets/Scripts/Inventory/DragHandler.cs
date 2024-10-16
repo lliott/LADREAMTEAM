@@ -37,6 +37,12 @@ public class DragHandler : MonoBehaviour
     {
         if (isDragging && draggedObject != null)
         {
+            //Destroy en drag
+            if(Input.GetMouseButtonUp(1)){
+                GoldenManagement.instance.IncreaseGolds(50); //nb gold à voir 
+                Destroy(draggedObject);
+            }
+            
             //suit souris par rapport au world
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorldPosition.z = 0; 
