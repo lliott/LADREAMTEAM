@@ -19,9 +19,8 @@ public class Win : MonoBehaviour
         if (collider2D.tag=="Lemming"){
             Debug.Log("win");
             currentWinner+=1;
-            
-            //collider2D.gameObject.SetActive(false);
-            //LemmingPooler.Instance.pools[0].size -=1;
+
+            Destroy(collider2D.gameObject);
         }
     }
 
