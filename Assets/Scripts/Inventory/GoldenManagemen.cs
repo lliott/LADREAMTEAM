@@ -1,0 +1,52 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class GoldenManagement : MonoBehaviour
+{
+    public static GoldenManagement instance;
+    
+    [HideInInspector] public int currentCoins;
+    
+    [SerializeField] private Text _textCurrentCoins;
+
+    [SerializeField] private int _initCoins = 50;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Start()
+    {
+        currentCoins = _initCoins;
+        _UpdateUI();
+    }
+
+    public void MinusGolds(int golds){
+        currentCoins -= golds;
+        _UpdateUI();
+    }
+
+    public void IncreaseGolds(int golds){
+        currentCoins += golds;
+        _UpdateUI();
+    }
+
+    private void _UpdateUI(){
+        if(currentCoins<=0){
+            _textCurrentCoins.text = "coins : 0" ;
+        } else{
+            _textCurrentCoins.text = "coins :" + currentCoins;
+        }
+    }
+
+}

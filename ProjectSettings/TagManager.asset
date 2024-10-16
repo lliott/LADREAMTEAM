@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Lemming
+  - Object
   layers:
   - Default
   - TransparentFX
@@ -11,6 +13,9 @@ TagManager:
   - 
   - Water
   - UI
+  - Floor
+  - Wall
+  - Button
   - 
   - 
   - 
@@ -19,10 +24,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Lemming
   - 
   - 
   - 
