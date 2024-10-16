@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LemmingPooler : MonoBehaviour
@@ -45,16 +46,17 @@ public class LemmingPooler : MonoBehaviour
     {
         if (!poolDictionary.ContainsKey(tag))
         {
-            Debug.LogWarning("tag " + tag + " doesnt exist");
+            Debug.LogWarning("tag " + tag + " doesn't exist");
             return null;
         }
 
         Queue<GameObject> objectPool = poolDictionary[tag];
 
         bool allActive = true;
+
         foreach (GameObject pooledObject in objectPool)
         {
-            if (!pooledObject.activeSelf)
+            if (pooledObject != null && !pooledObject.activeSelf)
             {
                 allActive = false;
                 break;
@@ -63,26 +65,35 @@ public class LemmingPooler : MonoBehaviour
 
         if (allActive)
         {
-            //waiting for available lemmy :^)
             return null;
         }
 
         GameObject objectToSpawn = objectPool.Dequeue();
 
-        while (objectToSpawn.activeSelf)
+        while (objectToSpawn == null || objectToSpawn.activeSelf)
         {
-            objectPool.Enqueue(objectToSpawn);
+            if (objectToSpawn != null && !Object.ReferenceEquals(objectToSpawn, null))
+            {
+                objectPool.Enqueue(objectToSpawn);
+            }
+
             objectToSpawn = objectPool.Dequeue();
         }
 
-        objectToSpawn.SetActive(true);
-        objectToSpawn.transform.position = position;
-        objectToSpawn.transform.rotation = rotation;
+        if (objectToSpawn != null && !Object.ReferenceEquals(objectToSpawn, null))
+        {
+            objectToSpawn.SetActive(true);
+            objectToSpawn.transform.position = position;
+            objectToSpawn.transform.rotation = rotation;
 
-        objectPool.Enqueue(objectToSpawn);
+            objectPool.Enqueue(objectToSpawn);
+            return objectToSpawn;
+        }
 
-        return objectToSpawn;
+        return null;
     }
+
+
 
     public void ReuseLemming(GameObject lemming)
     {
