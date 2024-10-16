@@ -240,6 +240,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   wallCheckPosition: {fileID: 1397933894079035303}
+  wallCheckPosition2: {fileID: 0}
   walled: 0
 --- !u!114 &-6296755950531413189
 MonoBehaviour:
