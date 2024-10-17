@@ -33,6 +33,10 @@ public class LemmingController : MonoBehaviour
     public bool walled = false;
     private int wallSide;
 
+    //Fan
+    [HideInInspector] public bool flying=false; // ds le ventilo
+    private bool wasFlying = false; 
+
     [HideInInspector] public Vector3 moveDirection = Vector3.zero; // appelé ds ConveyorBelt
     private Collider2D lemmingCollider;
     private bool movingRight = true;
@@ -154,9 +158,16 @@ public class LemmingController : MonoBehaviour
                 transform.position += moveDirection;
 
             }
+            else if(flying){
+                moveDirection.Set(movingRight ? speed * Time.fixedDeltaTime : -speed * Time.fixedDeltaTime, 0, 0);
+                
+                animator.SetBool("isWalking", false);
+                transform.position += moveDirection;
+
+                wasFlying = true;
+            }
             else
             {
-
                 animator.SetBool("isWalking", false);
                 return;
             }
@@ -199,12 +210,11 @@ public class LemmingController : MonoBehaviour
 
     private void KillLemmiCondition()
     {
-        if (!grounded)
+        if (!grounded&& !flying)
         {
             currentTimerCounter += Time.deltaTime;
 
-        } else {
-
+        } else if (grounded){
             currentTimerCounter = 0f;
         }
 
@@ -216,9 +226,14 @@ public class LemmingController : MonoBehaviour
 
     private void KillLemmiFromFall()
     {
-        if (grounded && canKillLemmi)
+        if (grounded && canKillLemmi && !wasFlying)
         {
             KillLemmi();
+        }
+
+        if (grounded && wasFlying)
+        {
+            wasFlying = false;
         }
     }
 

@@ -240,7 +240,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 131072
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -293,9 +293,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  killLemmiFallTimer: 1.6
+  killLemmiFallTimer: 1
   currentTimerCounter: 0
   coyoteTimeDuration: 0.5
+  stopped: 0
   groundCheckDistance: 0.3
   groundLayerMask:
     serializedVersion: 2
@@ -310,6 +311,9 @@ MonoBehaviour:
   wallCheckPosition: {fileID: 1397933894079035303}
   wallCheckPosition2: {fileID: 4391698239147159061}
   walled: 0
+  fallDmg: 0
+  flying: 0
+  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &-6296755950531413189
 MonoBehaviour:
   m_ObjectHideFlags: 0
