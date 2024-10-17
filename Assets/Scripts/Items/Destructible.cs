@@ -6,6 +6,7 @@ public class Destructible : MonoBehaviour
 {
     [SerializeField] private float goldPercentIncrease = 50;
     public int objectPrice = 50 ;
+    
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(1)) // clic droit
