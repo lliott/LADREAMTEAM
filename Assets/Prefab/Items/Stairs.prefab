@@ -62,9 +62,9 @@ Transform:
   m_GameObject: {fileID: 8369361258070493540}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.17, y: 1.25, z: 0}
-  m_LocalScale: {x: 4.118803, y: 1.7121682, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 3.17, y: 1.25, z: 5}
+  m_LocalScale: {x: 1.9999999, y: 1.9999999, z: 1.9999999}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 292305405304224963}
   m_Father: {fileID: 0}
@@ -110,7 +110,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 426b6f99a8263f14d931df13679187cd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 74a1fc5b57e15da4d8e82e3b35b2e19d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -143,7 +143,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 8369361258070493540}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 393bd9757b918c1478f06b1f4f8d3f44, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -170,7 +170,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.54, y: 2.26}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -178,9 +178,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.45170498, y: 0.24744526}
-      - {x: -0.7504494, y: -0.7640346}
-      - {x: 0.44991085, y: -0.71811587}
+    - - {x: 0.5028386, y: 0.40941888}
+      - {x: -0.5652179, y: -0.51926446}
+      - {x: 0.48960334, y: -0.52626914}
   m_UseDelaunayMesh: 0
 --- !u!61 &2730362357890856001
 BoxCollider2D:
@@ -214,18 +214,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.14061499, y: -0.79211915}
+  m_Offset: {x: -0.0016909838, y: -0.56388736}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.54, y: 2.26}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1735046, y: 0.10015994}
+  m_Size: {x: 1.0147357, y: 0.08031374}
   m_EdgeRadius: 0
 --- !u!114 &2095806374097608205
 MonoBehaviour:
@@ -241,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldPercentIncrease: 50
   objectPrice: 50
+  skull: {fileID: 0}
 --- !u!50 &2088908510997348246
 Rigidbody2D:
   serializedVersion: 4
