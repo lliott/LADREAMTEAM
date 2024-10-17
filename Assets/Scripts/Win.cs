@@ -41,7 +41,7 @@ public class Win : MonoBehaviour
     }
 
     public void ResumeGame(){ //Reprendre la game
-        MenuPause.SetActive(false);
+        MenuFin.SetActive(false);
         Time.timeScale = 1;
     }
 
