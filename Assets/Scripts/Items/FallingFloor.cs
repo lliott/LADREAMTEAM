@@ -6,11 +6,12 @@ public class FallingFloor : MonoBehaviour
 {
     [SerializeField] private float beforeFallCounter = 5f;
     [ReadOnly]
-    [SerializeField] private bool willFall = false;
+    [SerializeField] private bool willFall;
     private Rigidbody2D rb2D;
 
     void Start()
     {
+        willFall = false;
         rb2D = GetComponent<Rigidbody2D>();
     }
     private void OnCollisionEnter2D(Collision2D col)

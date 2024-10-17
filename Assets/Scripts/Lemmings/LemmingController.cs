@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LemmingController : MonoBehaviour
@@ -12,6 +13,9 @@ public class LemmingController : MonoBehaviour
     [SerializeField] private float currentTimerCounter = 0f;
     [SerializeField] private float coyoteTimeDuration = 0.5f;
     private float coyoteTimeCounter = 0f;
+
+    [Header("Stop All Movement")]
+    public bool stopped = false;
 
     [Header("Ground Detection")]
     [SerializeField] private float groundCheckDistance = 0.3f;
@@ -33,15 +37,24 @@ public class LemmingController : MonoBehaviour
     private bool movingRight = true;
     private SpriteRenderer spriteRenderer;
     private Vector3 moveDirection = Vector3.zero;
+    private Animator animator;
+
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         lemmingCollider = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
+
+        if (animator == null)
+        {
+            Debug.LogError("Animator component not found on " + gameObject.name);
+        }
     }
 
     private void OnEnable()
     {
+        stopped = false;
         currentTimerCounter = 0;
         grounded = false;
         canKillLemmi = false;
@@ -78,11 +91,13 @@ public class LemmingController : MonoBehaviour
 
         if (hit1.collider != null || hit2.collider != null)
         {
+            animator.SetBool("isFalling", false);
             grounded = true;
             coyoteTimeCounter = 0f;
         }
         else
         {
+            animator.SetBool("isFalling", true);
             grounded = false;
             if (wasGrounded)
             {
@@ -123,22 +138,31 @@ public class LemmingController : MonoBehaviour
 
     private void MoveLemming()
     {
-        if (walled)
+        if (!stopped)
         {
-            ChangeDirection();
-            walled = false;
-        }
+            if (walled)
+            {
+                ChangeDirection();
+                walled = false;
+            }
 
-        if (grounded || (!grounded && coyoteTimeCounter > 0f))
-        {
-            moveDirection.Set(movingRight ? speed * Time.fixedDeltaTime : -speed * Time.fixedDeltaTime, 0, 0);
+            if (grounded || (!grounded && coyoteTimeCounter > 0f))
+            {
+                moveDirection.Set(movingRight ? speed * Time.fixedDeltaTime : -speed * Time.fixedDeltaTime, 0, 0);
 
-            transform.position += moveDirection;
+                animator.SetBool("isWalking", true);
+                transform.position += moveDirection;
 
-        } else {
+            }
+            else
+            {
 
-            return;
-        }
+                animator.SetBool("isWalking", false);
+                return;
+            }
+
+        } else { return; }
+
     }
 
     private void ResolveCollisions()
@@ -199,6 +223,6 @@ public class LemmingController : MonoBehaviour
 
     public void KillLemmi()
     {
-        gameObject.SetActive(false);
+        animator.SetTrigger("isDying");
     }
 }
