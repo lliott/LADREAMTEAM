@@ -233,7 +233,7 @@ MonoBehaviour:
   groundCheckDistance: 0.3
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 832
   groundCheckPosition: {fileID: 8012613989766153361}
   grounded: 0
   wallCheckDistance: 0.1
