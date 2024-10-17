@@ -162,7 +162,6 @@ public class LemmingController : MonoBehaviour
         }
     }
 
-
     private void ChangeDirection()
     {
         movingRight = !movingRight;
