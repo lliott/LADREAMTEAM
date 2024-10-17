@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afea18618e6e8e4b974fd200796f303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beforeFallCounter: 0
+  beforeFallCounter: 3
   willFall: 0
 --- !u!50 &280847439
 Rigidbody2D:
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afea18618e6e8e4b974fd200796f303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beforeFallCounter: 0
+  beforeFallCounter: 3
   willFall: 0
 --- !u!50 &317462215
 Rigidbody2D:
@@ -1244,7 +1244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afea18618e6e8e4b974fd200796f303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beforeFallCounter: 0
+  beforeFallCounter: 3
   willFall: 0
 --- !u!50 &507763112
 Rigidbody2D:
@@ -1525,7 +1525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afea18618e6e8e4b974fd200796f303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beforeFallCounter: 0
+  beforeFallCounter: 3
   willFall: 0
 --- !u!50 &591302551
 Rigidbody2D:
@@ -3153,7 +3153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afea18618e6e8e4b974fd200796f303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beforeFallCounter: 5
+  beforeFallCounter: 3
   willFall: 0
 --- !u!1 &1316308913
 GameObject:

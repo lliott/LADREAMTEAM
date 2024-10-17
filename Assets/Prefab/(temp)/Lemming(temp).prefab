@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 34188947296443288}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.184, y: -0.524, z: 0}
+  m_LocalPosition: {x: 0.184, y: -0.561, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 270609711187610887}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.213, y: -0.519, z: 0}
+  m_LocalPosition: {x: -0.15, y: -0.553, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 2603165534979781906}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.26, y: 0.191, z: 0}
+  m_LocalPosition: {x: 0.363, y: -0.016, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -118,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 5345796919243684407}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.013, y: 0.533, z: 0}
+  m_LocalPosition: {x: 0.327, y: 0.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -135,9 +135,11 @@ GameObject:
   - component: {fileID: 5900529968983186280}
   - component: {fileID: 7783818845324681385}
   - component: {fileID: 1434682432877460014}
-  - component: {fileID: 8361347896787920373}
+  - component: {fileID: 4385246828122164752}
   - component: {fileID: -3980379674732063557}
   - component: {fileID: -6296755950531413189}
+  - component: {fileID: 8360623216099551808}
+  - component: {fileID: -5262695133773401219}
   m_Layer: 17
   m_Name: Lemming(temp)
   m_TagString: Lemming
@@ -243,7 +245,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &8361347896787920373
+--- !u!70 &4385246828122164752
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,8 +277,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.019782543, y: -0.026364863}
-  m_Size: {x: 0.6683912, y: 0.99811256}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.7, y: 1.1}
   m_Direction: 0
 --- !u!114 &-3980379674732063557
 MonoBehaviour:
@@ -291,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  killLemmiFallTimer: 1
+  killLemmiFallTimer: 1.6
   currentTimerCounter: 0
   coyoteTimeDuration: 0.5
   groundCheckDistance: 0.3
@@ -323,3 +325,37 @@ MonoBehaviour:
   goldPercentIncrease: 50
   objectPrice: 50
   skull: {fileID: 2120533686035275991, guid: c387dd1ad2409e743ba14945bdf1970b, type: 3}
+--- !u!95 &8360623216099551808
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283240314172663801}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 704518a9ef8c69743b0cfb03b6f18419, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-5262695133773401219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283240314172663801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d28e3f8d64f6434e9c7eb5d6ed81c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8360623216099551808}
