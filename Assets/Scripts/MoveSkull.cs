@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LemmingController : MonoBehaviour
+public class MoveSkull : MonoBehaviour
 {
     [Header("Lemmies")]
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float killLemmiFallTimer = 7f;
-    private bool canKillLemmi = false;
+    [SerializeField] private float killSkullFallTimer = 7f;
+    [SerializeField] private float killSkullTimer = 7f;
+    private bool canKillSkull = false;
     [ReadOnly]
     [SerializeField] private float currentTimerCounter = 0f;
     [SerializeField] private float coyoteTimeDuration = 0.5f;
@@ -38,23 +39,25 @@ public class LemmingController : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         lemmingCollider = GetComponent<Collider2D>();
-    }
 
-    private void OnEnable()
-    {
         currentTimerCounter = 0;
         grounded = false;
-        canKillLemmi = false;
+        canKillSkull = false;
         movingRight = true;
     }
 
     private void Update()
     {
-        KillLemmiCondition();
+        KillSkullCondition();
 
         if (coyoteTimeCounter > 0f)
         {
             coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        if (killSkullTimer > 0f)
+        {
+            killSkullTimer -= Time.deltaTime;
         }
     }
 
@@ -65,7 +68,8 @@ public class LemmingController : MonoBehaviour
         MoveLemming();
         FlipLemming();
         ResolveCollisions();
-        KillLemmiFromFall();
+        KillSkullFromFall();
+        KillSkullAfterTimer();
     }
 
     private void CheckIfGrounded()
@@ -80,9 +84,9 @@ public class LemmingController : MonoBehaviour
         {
             grounded = true;
             coyoteTimeCounter = 0f;
-        }
-        else
-        {
+
+        } else {
+
             grounded = false;
             if (wasGrounded)
             {
@@ -112,12 +116,12 @@ public class LemmingController : MonoBehaviour
                 {
                     walled = true;
                     wallSide = direction == Vector2.left ? -1 : 1;
-                    break; // Exit inner loop
+                    break;
                 }
             }
 
             if (walled)
-                break; // Exit outer loop
+                break;
         }
     }
 
@@ -172,7 +176,7 @@ public class LemmingController : MonoBehaviour
         transform.rotation = movingRight ? Quaternion.identity : Quaternion.Euler(0f, 180f, 0f);
     }
 
-    private void KillLemmiCondition()
+    private void KillSkullCondition()
     {
         if (!grounded)
         {
@@ -183,22 +187,31 @@ public class LemmingController : MonoBehaviour
             currentTimerCounter = 0f;
         }
 
-        if (currentTimerCounter >= killLemmiFallTimer)
+        if (currentTimerCounter >= killSkullFallTimer)
         {
-            canKillLemmi = true;
+            canKillSkull = true;
+        }
+
+    }
+
+    private void KillSkullFromFall()
+    {
+        if (grounded && canKillSkull)
+        {
+            KillSkull();
         }
     }
 
-    private void KillLemmiFromFall()
+    private void KillSkullAfterTimer()
     {
-        if (grounded && canKillLemmi)
+        if (killSkullTimer <= 0f)
         {
-            KillLemmi();
+            KillSkull();
         }
     }
 
-    public void KillLemmi()
+    public void KillSkull()
     {
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

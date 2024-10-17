@@ -4,55 +4,38 @@ using UnityEngine;
 
 public class FallingFloor : MonoBehaviour
 {
+    [SerializeField] private float beforeFallCounter = 5f;
     [ReadOnly]
-    [SerializeField] private int whoTouchedMe = 0;
-    [SerializeField] private int theyTouchedMe = 2;
+    [SerializeField] private bool willFall = false;
     private Rigidbody2D rb2D;
 
-    private HashSet<GameObject> lemmingsTouched = new HashSet<GameObject>();
     void Start()
     {
-        theyTouchedMe += 1;
         rb2D = GetComponent<Rigidbody2D>();
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.layer == LayerMask.NameToLayer("Lemming"))
+        GameObject lemmingGameObject = col.transform.root.gameObject;
+
+        if (lemmingGameObject.layer == LayerMask.NameToLayer("Lemming") || lemmingGameObject.layer == LayerMask.NameToLayer("Skull"))
         {
-            if (!lemmingsTouched.Contains(col.gameObject))
-            {
-                whoTouchedMe += 1;
-                lemmingsTouched.Add(col.gameObject);
-
-                Debug.Log("Lemming entered: " + col.gameObject.name + ". Total: " + whoTouchedMe);
-
-                if (whoTouchedMe >= theyTouchedMe)
-                {
-                    SwitchToDynamic();
-                }
-            }
+            StartCoroutine(StartFallCounter());
         }
     }
 
-    private void OnCollisionExit2D(Collision2D col)
+    public IEnumerator StartFallCounter()
     {
-        if (col.gameObject.layer == LayerMask.NameToLayer("Lemming"))
-        {
-            if (lemmingsTouched.Contains(col.gameObject))
-            {
-                lemmingsTouched.Remove(col.gameObject);
+        yield return new WaitForSeconds(beforeFallCounter);
 
-                Debug.Log("Lemming exited: " + col.gameObject.name);
-            }
-        }
+        willFall = true;
+        SwitchToDynamic();
     }
 
-    public void SwitchToDynamic()
+    private void SwitchToDynamic()
     {
         if (rb2D != null)
         {
             rb2D.bodyType = RigidbodyType2D.Dynamic;
-            Debug.Log("Floor is now dynamic!");
         }
     }
 }

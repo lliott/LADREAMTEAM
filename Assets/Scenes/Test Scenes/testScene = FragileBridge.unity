@@ -418,7 +418,7 @@ Transform:
   m_GameObject: {fileID: 280847436}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.57, y: 7.838765, z: -3.4066806}
+  m_LocalPosition: {x: -8.57, y: 5.98, z: -3.4066806}
   m_LocalScale: {x: 1.7823098, y: 0.4998, z: 0.4998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -436,8 +436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afea18618e6e8e4b974fd200796f303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whoTouchedMe: 0
-  maxThatCanTouchMe: 2
+  beforeFallCounter: 0
+  willFall: 0
 --- !u!50 &280847439
 Rigidbody2D:
   serializedVersion: 4
@@ -591,7 +591,7 @@ Transform:
   m_GameObject: {fileID: 317462212}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.28, y: 7.838765, z: -3.4066806}
+  m_LocalPosition: {x: -12.24, y: 6.64, z: -3.4066806}
   m_LocalScale: {x: 1.7823098, y: 0.4998, z: 0.4998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -609,8 +609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afea18618e6e8e4b974fd200796f303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whoTouchedMe: 0
-  maxThatCanTouchMe: 2
+  beforeFallCounter: 0
+  willFall: 0
 --- !u!50 &317462215
 Rigidbody2D:
   serializedVersion: 4
@@ -1021,7 +1021,7 @@ Transform:
   m_GameObject: {fileID: 430006040}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.54, y: 6.4025006, z: 0}
+  m_LocalPosition: {x: 6.54, y: 3.22, z: 0}
   m_LocalScale: {x: 8.148316, y: 0.4998, z: 0.4998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1226,7 +1226,7 @@ Transform:
   m_GameObject: {fileID: 507763109}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.4, y: 7.838765, z: -3.4066806}
+  m_LocalPosition: {x: -10.4, y: 6.39, z: -3.4066806}
   m_LocalScale: {x: 1.7823098, y: 0.4998, z: 0.4998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1244,8 +1244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afea18618e6e8e4b974fd200796f303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whoTouchedMe: 0
-  maxThatCanTouchMe: 2
+  beforeFallCounter: 0
+  willFall: 0
 --- !u!50 &507763112
 Rigidbody2D:
   serializedVersion: 4
@@ -1507,7 +1507,7 @@ Transform:
   m_GameObject: {fileID: 591302548}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.72, y: 7.838765, z: -3.4066806}
+  m_LocalPosition: {x: -6.72, y: 5.73, z: -3.4066806}
   m_LocalScale: {x: 1.7823098, y: 0.4998, z: 0.4998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1525,8 +1525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afea18618e6e8e4b974fd200796f303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whoTouchedMe: 0
-  maxThatCanTouchMe: 2
+  beforeFallCounter: 0
+  willFall: 0
 --- !u!50 &591302551
 Rigidbody2D:
   serializedVersion: 4
@@ -3011,7 +3011,7 @@ Transform:
   m_GameObject: {fileID: 1264885061}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.13, y: 7.838765, z: -3.4066806}
+  m_LocalPosition: {x: -14.09, y: 7.32, z: -3.4066806}
   m_LocalScale: {x: 1.7823098, y: 0.4998, z: 0.4998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3153,8 +3153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afea18618e6e8e4b974fd200796f303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whoTouchedMe: 0
-  maxThatCanTouchMe: 2
+  beforeFallCounter: 5
+  willFall: 0
 --- !u!1 &1316308913
 GameObject:
   m_ObjectHideFlags: 0
@@ -3220,7 +3220,7 @@ MonoBehaviour:
   pools:
   - tag: Lemming
     prefab: {fileID: 7283240314172663801, guid: 9d0c9052806454c4cb2cdf94302c9a98, type: 3}
-    size: 3
+    size: 1
 --- !u!4 &1377655866
 Transform:
   m_ObjectHideFlags: 0
@@ -4062,6 +4062,10 @@ PrefabInstance:
     - target: {fileID: 4897352523271245942, guid: f2f36ff2072ad4e45bcfa705b92d0f88, type: 3}
       propertyPath: m_Name
       value: LemmingCreator
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897352523271245942, guid: f2f36ff2072ad4e45bcfa705b92d0f88, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
