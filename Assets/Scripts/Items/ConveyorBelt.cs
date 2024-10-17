@@ -9,7 +9,6 @@ public class ConveyorBelt : MonoBehaviour
     private float InitSpeed;
     private int DirX = 1;
     private bool sameDirX = true;
-    private bool inTrigger = false;
 
     [SerializeField] private List<GameObject> lemmingsList = new List<GameObject>(); //lemmings sur le tapis
 
@@ -31,7 +30,7 @@ public class ConveyorBelt : MonoBehaviour
             }
         }
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Lemming"))
@@ -42,7 +41,6 @@ public class ConveyorBelt : MonoBehaviour
             {
                 other.GetComponent<LemmingController>().ChangeDirection();
             }else{ 
-                inTrigger = true;
                 lemmingsList.Add(other.gameObject);
                 other.GetComponent<LemmingController>().speed = speed;
             }
@@ -54,7 +52,6 @@ public class ConveyorBelt : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Lemming"))
         {
-            inTrigger = false;
             lemmingsList.Remove(other.gameObject);
             other.GetComponent<LemmingController>().speed = InitSpeed;
         }
