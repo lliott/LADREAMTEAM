@@ -17,6 +17,7 @@ public class LemmingController : MonoBehaviour
     [SerializeField] private float groundCheckDistance = 0.3f;
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private Transform groundCheckPosition;
+    [SerializeField] private Transform groundCheckPosition2;
     public bool grounded = false;
     private bool wasGrounded = false;
 
@@ -24,6 +25,7 @@ public class LemmingController : MonoBehaviour
     [SerializeField] private float wallCheckDistance = 0.3f;
     [SerializeField] private LayerMask wallLayerMask;
     [SerializeField] private Transform wallCheckPosition;
+    [SerializeField] private Transform wallCheckPosition2;
     public bool walled = false;
     private int wallSide;
 
@@ -68,45 +70,54 @@ public class LemmingController : MonoBehaviour
 
     private void CheckIfGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(groundCheckPosition.position, Vector2.down, groundCheckDistance, groundLayerMask);
+        RaycastHit2D hit1 = Physics2D.Raycast(groundCheckPosition.position, Vector2.down, groundCheckDistance, groundLayerMask);
+        RaycastHit2D hit2 = Physics2D.Raycast(groundCheckPosition2.position, Vector2.down, groundCheckDistance, groundLayerMask);
 
         Debug.DrawRay(groundCheckPosition.position, Vector2.down * groundCheckDistance, Color.red);
+        Debug.DrawRay(groundCheckPosition2.position, Vector2.down * groundCheckDistance, Color.red);
 
-        if (hit.collider != null)
+        if (hit1.collider != null || hit2.collider != null)
         {
             grounded = true;
             coyoteTimeCounter = 0f;
-
-        } else {
-
+        }
+        else
+        {
             grounded = false;
             if (wasGrounded)
             {
                 coyoteTimeCounter = coyoteTimeDuration;
             }
         }
+
         wasGrounded = grounded;
     }
 
     private void CheckIfWalled()
     {
         Vector2[] directions = { Vector2.left, Vector2.right };
-
         walled = false;
 
-        foreach (Vector2 direction in directions)
+        Transform[] wallCheckPositions = { wallCheckPosition, wallCheckPosition2 };
+
+        foreach (Transform wallCheckPosition in wallCheckPositions)
         {
-            RaycastHit2D hit = Physics2D.Raycast(wallCheckPosition.position, direction, wallCheckDistance, wallLayerMask);
-
-            Debug.DrawRay(wallCheckPosition.position, direction * wallCheckDistance, Color.blue);
-
-            if (hit.collider != null)
+            foreach (Vector2 direction in directions)
             {
-                walled = true;
+                RaycastHit2D hit = Physics2D.Raycast(wallCheckPosition.position, direction, wallCheckDistance, wallLayerMask);
 
-                wallSide = direction == Vector2.left ? -1 : 1;
-                break;
+                Debug.DrawRay(wallCheckPosition.position, direction * wallCheckDistance, Color.blue);
+
+                if (hit.collider != null)
+                {
+                    walled = true;
+                    wallSide = direction == Vector2.left ? -1 : 1;
+                    break; // Exit inner loop
+                }
             }
+
+            if (walled)
+                break; // Exit outer loop
         }
     }
 
