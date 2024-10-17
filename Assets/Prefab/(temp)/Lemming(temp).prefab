@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1397933894079035303}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: wallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4391698239147159061}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: wallCheck2
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
@@ -322,3 +322,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldPercentIncrease: 50
   objectPrice: 50
+  skull: {fileID: 2120533686035275991, guid: c387dd1ad2409e743ba14945bdf1970b, type: 3}

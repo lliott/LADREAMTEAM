@@ -6,6 +6,10 @@ public class Destructible : MonoBehaviour
 {
     [SerializeField] private float goldPercentIncrease = 50;
     public int objectPrice = 50 ;
+
+    [Header("Skull prefab")]
+    [SerializeField] private GameObject skull;
+
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(1)) // clic droit
@@ -18,6 +22,7 @@ public class Destructible : MonoBehaviour
             }else if(CompareTag("Lemming")){
                 gameObject.SetActive(false); //crane qui roule
                 //ELLIOTt C ICI QUI FAUT ADD MERCE
+                Instantiate(skull, transform.position, transform.rotation);
             }
         }
     }
