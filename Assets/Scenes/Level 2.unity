@@ -948,7 +948,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBuy: 0
-  price: 70
 --- !u!114 &427751081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,6 +1290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 329707e36a47d764fa220bfcecbc614f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldPercentIncrease: 50
+  objectPrice: 50
 --- !u!1 &562773833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,7 +1663,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBuy: 0
-  price: 50
 --- !u!114 &663540556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2240,7 +2240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBuy: 0
-  price: 22
 --- !u!114 &880838994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2462,7 +2461,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBuy: 0
-  price: 30
 --- !u!114 &1164693505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3163,7 +3161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBuy: 0
-  price: 12
 --- !u!114 &1552119827
 MonoBehaviour:
   m_ObjectHideFlags: 0
