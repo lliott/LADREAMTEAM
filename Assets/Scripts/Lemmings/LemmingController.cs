@@ -6,8 +6,10 @@ public class LemmingController : MonoBehaviour
 {
     [Header("Lemmies")]
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float killLemmiTimer = 7f;
-    private float currentTimerCounter = 0f;
+    [SerializeField] private float killLemmiFallTimer = 7f;
+    private bool canKillLemmi = false;
+    [ReadOnly]
+    [SerializeField] private float currentTimerCounter = 0f;
     [SerializeField] private float coyoteTimeDuration = 0.5f;
     private float coyoteTimeCounter = 0f;
 
@@ -38,6 +40,9 @@ public class LemmingController : MonoBehaviour
 
     private void OnEnable()
     {
+        currentTimerCounter = 0;
+        grounded = false;
+        canKillLemmi = false;
         movingRight = true;
     }
 
@@ -58,6 +63,7 @@ public class LemmingController : MonoBehaviour
         MoveLemming();
         FlipLemming();
         ResolveCollisions();
+        KillLemmiFromFall();
     }
 
     private void CheckIfGrounded()
@@ -104,7 +110,7 @@ public class LemmingController : MonoBehaviour
         }
     }
 
-        private void MoveLemming()
+    private void MoveLemming()
     {
         if (walled)
         {
@@ -167,7 +173,15 @@ public class LemmingController : MonoBehaviour
             currentTimerCounter = 0f;
         }
 
-        if (currentTimerCounter > killLemmiTimer)
+        if (currentTimerCounter >= killLemmiFallTimer)
+        {
+            canKillLemmi = true;
+        }
+    }
+
+    private void KillLemmiFromFall()
+    {
+        if (grounded && canKillLemmi)
         {
             KillLemmi();
         }
