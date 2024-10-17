@@ -5,7 +5,7 @@ using UnityEngine;
 public class LemmingController : MonoBehaviour
 {
     [Header("Lemmies")]
-    [SerializeField] private float speed = 5f;
+    public float speed = 5f;
     [SerializeField] private float killLemmiFallTimer = 7f;
     private bool canKillLemmi = false;
     [ReadOnly]
@@ -32,7 +32,7 @@ public class LemmingController : MonoBehaviour
     private Collider2D lemmingCollider;
     private bool movingRight = true;
     private SpriteRenderer spriteRenderer;
-    private Vector3 moveDirection = Vector3.zero;
+    [HideInInspector] public Vector3 moveDirection = Vector3.zero;
 
     void Start()
     {
@@ -162,7 +162,8 @@ public class LemmingController : MonoBehaviour
         }
     }
 
-    private void ChangeDirection()
+    //Appelé ds ConveyorBelt
+    public void ChangeDirection()
     {
         movingRight = !movingRight;
     }
