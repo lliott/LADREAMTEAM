@@ -40,6 +40,7 @@ public class LemmingController : MonoBehaviour
 
     private void OnEnable()
     {
+        currentTimerCounter = 0;
         grounded = false;
         canKillLemmi = false;
         movingRight = true;
