@@ -33,10 +33,10 @@ public class LemmingController : MonoBehaviour
     public bool walled = false;
     private int wallSide;
 
+    [HideInInspector] public Vector3 moveDirection = Vector3.zero; // appelé ds ConveyorBelt
     private Collider2D lemmingCollider;
     private bool movingRight = true;
     private SpriteRenderer spriteRenderer;
-    private Vector3 moveDirection = Vector3.zero;
     private Animator animator;
 
 
