@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Destructible : MonoBehaviour
 {
+    [Header("Coins for Items Only")]
     [SerializeField] private float goldPercentIncrease = 50;
     public int objectPrice = 50 ;
 
     [Header("Skull prefab")]
     [SerializeField] private GameObject skull;
 
+    //anim
     private Animator animator;
+
+    //Audio
+    private AudioSource _audio;
 
     private void Start()
     {
@@ -18,6 +23,10 @@ public class Destructible : MonoBehaviour
         if (animator == null)
         {
             Debug.LogError("Animator component not found on " + gameObject.name);
+        }
+
+        if (TryGetComponent<AudioSource>(out AudioSource audio)){
+            _audio = audio;
         }
     }
     private void OnMouseOver()
@@ -35,7 +44,9 @@ public class Destructible : MonoBehaviour
                 if (animator != null)
                 {
                     animator.SetTrigger("transiSkull");
-
+                    if(_audio!=null){
+                        _audio.Play();
+                    }
                     StartCoroutine(DeactivateAfterAnimation());
                 }
                 else
