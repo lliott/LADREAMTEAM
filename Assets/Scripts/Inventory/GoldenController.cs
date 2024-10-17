@@ -6,11 +6,15 @@ using UnityEngine.UI;
 public class GoldenController : MonoBehaviour
 {
     [HideInInspector] public bool canBuy;
-    [SerializeField] private int price;
+    private int price;
     private Text _textPrice;
 
      void Start(){
         _textPrice = GetComponentInChildren<Text>();
+        if(GetComponent<Slot>().objectPrefab!=null){    
+            price = GetComponent<Slot>().objectPrefab.GetComponent<Destructible>().objectPrice;
+        }
+
         _textPrice.text = price.ToString();
     }
 

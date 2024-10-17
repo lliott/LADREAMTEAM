@@ -8,7 +8,7 @@ public class DragHandler : MonoBehaviour
     public static DragHandler instance;
     [SerializeField] private RectTransform zone; // zone où le drop possible
 
-    private GameObject draggedObject;
+    [HideInInspector] public GameObject draggedObject { get; private set; }
     private bool isDragging = false;
 
     private void Start()
@@ -37,13 +37,19 @@ public class DragHandler : MonoBehaviour
     {
         if (isDragging && draggedObject != null)
         {
+            //Destroy en drag
+            if(Input.GetMouseButtonUp(1)){
+                GoldenManagement.instance.IncreaseGolds(50); //nb gold à voir 
+                Destroy(draggedObject);
+            }
+            
             //suit souris par rapport au world
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorldPosition.z = 0; 
             draggedObject.GetComponent<Transform>().position = mouseWorldPosition;
 
             //Desactive le collider
-            if (draggedObject.TryGetComponent<BoxCollider2D>(out BoxCollider2D coll))
+            if (draggedObject.TryGetComponent<Collider2D>(out Collider2D coll))
             {
                 coll.enabled = false;
             }
@@ -62,9 +68,6 @@ public class DragHandler : MonoBehaviour
                 {
                     coll.enabled = true;
                 }
-            }
-            else{
-                Debug.Log("ne pas pas etre deposé hors zone"); //voir la condition
             }
         }
     }    

@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class Destructible : MonoBehaviour
 {
+    [SerializeField] private float goldPercentIncrease = 50;
+    public int objectPrice = 50 ;
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(1)) // clic droit
         {
             if (CompareTag("Object"))
             {
-                GoldenManagement.instance.IncreaseGolds(50); //nb gold à voir 
+                GoldenManagement.instance.IncreaseGolds(objectPrice*(int)goldPercentIncrease/100); //nb gold à voir 
                 Destroy(gameObject);
 
             }else if(CompareTag("Lemming")){
-                GoldenManagement.instance.IncreaseGolds(100); //nb gold à voir 
-                gameObject.SetActive(false);
+                gameObject.SetActive(false); //crane qui roule
+                //ELLIOTt C ICI QUI FAUT ADD MERCE
             }
         }
     }
