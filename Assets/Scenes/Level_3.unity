@@ -3047,7 +3047,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1643338844}
   - {fileID: 1696962593}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3910,7 +3909,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2195840147508217641, guid: 501b48b0972237741afd9487c198631d, type: 3}
       propertyPath: pools.Array.data[0].size
-      value: 0
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3118616787499952555, guid: 501b48b0972237741afd9487c198631d, type: 3}
       propertyPath: spawnInterval
@@ -4468,54 +4467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679510d19c919524cbda4aaa3fe1328d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1643338843
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1643338844}
-  - component: {fileID: 1643338845}
-  m_Layer: 0
-  m_Name: LemmingPooler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1643338844
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643338843}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1144098310}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1643338845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643338843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9594c042fc9917242a6e5d467264e06b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pools:
-  - tag: Lemming
-    prefab: {fileID: 7283240314172663801, guid: 9d0c9052806454c4cb2cdf94302c9a98, type: 3}
-    size: 13
 --- !u!1001 &1654578394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4978,9 +4929,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 6dcce934ee672bf4d916d6f5b75a92fe, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5074,9 +5025,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: e69f9e5d169e0ca49a49266d2a901e11, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -19078,6 +19029,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 680700529}
+    - target: {fileID: 5532946084426625899, guid: ed1ff7441c9a9d044b51283b6465d7ba, type: 3}
+      propertyPath: delayAfterLastLemmingLeaves
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
