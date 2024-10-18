@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 2730362357890856001}
   - component: {fileID: 2095806374097608205}
   - component: {fileID: 2088908510997348246}
+  - component: {fileID: 7969682938307665993}
   m_Layer: 9
   m_Name: Stairs
   m_TagString: Object
@@ -241,6 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldPercentIncrease: 50
   objectPrice: 50
+  skull: {fileID: 0}
 --- !u!50 &2088908510997348246
 Rigidbody2D:
   serializedVersion: 4
@@ -268,3 +270,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &7969682938307665993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8369361258070493540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7c7add47960db498eacd889ce3618b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorHoverTexture: {fileID: 2800000, guid: 00e035b71486af4459c3477118275316, type: 3}
+  defautCursor: {fileID: 2800000, guid: 931bd07aeddbb5b4a92909521612dde3, type: 3}

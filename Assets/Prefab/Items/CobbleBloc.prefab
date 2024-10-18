@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1955369533422977783}
   - component: {fileID: 6582090174042471876}
   - component: {fileID: -1142948561546136909}
+  - component: {fileID: -5269315446941440762}
   m_Layer: 6
   m_Name: CobbleBloc
   m_TagString: Object
@@ -174,3 +175,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-5269315446941440762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535171585872519757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7c7add47960db498eacd889ce3618b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorHoverTexture: {fileID: 2800000, guid: 00e035b71486af4459c3477118275316, type: 3}
+  defautCursor: {fileID: 2800000, guid: 931bd07aeddbb5b4a92909521612dde3, type: 3}
