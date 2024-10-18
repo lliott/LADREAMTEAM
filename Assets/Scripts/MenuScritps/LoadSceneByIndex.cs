@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -12,9 +13,11 @@ public class ButtonManager : MonoBehaviour
         public Button button;
         public int sceneIndex;
         public string buttonText;
+        public bool quit;
     }
 
     public List<ButtonData> buttons = new List<ButtonData>();
+    [SerializeField] private float fadeToBlackTimer = 2f;
 
     // Audio
     private AudioSource _audio;
@@ -29,6 +32,7 @@ public class ButtonManager : MonoBehaviour
         {
             // Set the button text
             TextMeshProUGUI tmpText = buttonData.button.GetComponentInChildren<TextMeshProUGUI>();
+
             if (tmpText != null)
             {
                 tmpText.text = buttonData.buttonText;
@@ -40,7 +44,16 @@ public class ButtonManager : MonoBehaviour
 
             // Add listener to the button
             int index = buttonData.sceneIndex; // Local copy to avoid closure issues
-            buttonData.button.onClick.AddListener(() => LoadSceneByIndex(index));
+
+            if (buttonData.quit == true)
+            {
+                buttonData.button.onClick.AddListener(() => QuitGame());
+
+            }
+            else {
+
+                buttonData.button.onClick.AddListener(() => LoadSceneByIndex(index));
+            }
         }
 
         if (TryGetComponent<AudioSource>(out AudioSource audio))
@@ -76,5 +89,20 @@ public class ButtonManager : MonoBehaviour
         sceneToLoad = index; 
         Time.timeScale = 1;
         isLoading = true; 
+    }
+
+    void QuitGame()
+    {
+        Application.Quit();
+
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #endif
+    }
+
+    private IEnumerator DeactivateAfterAnimation()
+    {
+        yield return new WaitForSeconds(fadeToBlackTimer);
+
     }
 }
