@@ -2380,7 +2380,7 @@ Transform:
   m_GameObject: {fileID: 1356159651}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.71, y: 3.44, z: -3.4066806}
+  m_LocalPosition: {x: -16.23, y: 3.44, z: -3.4066806}
   m_LocalScale: {x: 2.0693, y: 3.184944, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2496,6 +2496,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbWinner: 1
+  MenuFin: {fileID: 0}
+  currentWinner: 0
 --- !u!1 &1377655864
 GameObject:
   m_ObjectHideFlags: 0
@@ -2528,7 +2530,7 @@ MonoBehaviour:
   pools:
   - tag: Lemming
     prefab: {fileID: 7283240314172663801, guid: 9d0c9052806454c4cb2cdf94302c9a98, type: 3}
-    size: 3
+    size: 1
 --- !u!4 &1377655866
 Transform:
   m_ObjectHideFlags: 0
@@ -2793,6 +2795,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbWinner: 1
+  MenuFin: {fileID: 0}
+  currentWinner: 0
 --- !u!1 &1571847072
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,7 +3241,7 @@ GameObject:
   - component: {fileID: 1884488660}
   - component: {fileID: 1884488659}
   - component: {fileID: 1884488658}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KillZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3492,7 +3496,7 @@ Transform:
   m_GameObject: {fileID: 1900183293}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.35, y: 0.08, z: 0}
+  m_LocalPosition: {x: -5.35, y: -3.95, z: 0}
   m_LocalScale: {x: 17.253887, y: 0.4998, z: 0.4998}
   m_ConstrainProportionsScale: 0
   m_Children: []
