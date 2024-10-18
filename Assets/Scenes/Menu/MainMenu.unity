@@ -1957,22 +1957,27 @@ MonoBehaviour:
     sceneIndex: 4
     buttonText: Start Game
     quit: 0
+    nextLevel: 0
   - button: {fileID: 549940785}
     sceneIndex: 2
     buttonText: Level Selector
     quit: 0
+    nextLevel: 0
   - button: {fileID: 693704746}
     sceneIndex: 0
     buttonText: Quit Game
     quit: 1
+    nextLevel: 0
   - button: {fileID: 205463496}
     sceneIndex: 1
     buttonText: Credits
     quit: 0
+    nextLevel: 0
   - button: {fileID: 1733346661}
     sceneIndex: 3
     buttonText: Options
     quit: 0
+    nextLevel: 0
   fadeToBlackTimer: 2
 --- !u!1 &1828282686
 GameObject:

@@ -80,9 +80,20 @@ public class ButtonManager : MonoBehaviour
 
             if (timer >= delay)
             {
-                SceneManager.LoadScene(sceneToLoad); 
-                isLoading = false; 
-                timer = 0f; 
+                int totalScenes = SceneManager.sceneCountInBuildSettings;
+
+                if (sceneToLoad >= 9)
+                {
+                    SceneManager.LoadScene(0);
+                    isLoading = false;
+                    timer = 0f;
+
+                } else {
+
+                    SceneManager.LoadScene(sceneToLoad);
+                    isLoading = false;
+                    timer = 0f;
+                }
             }
         }
     }
