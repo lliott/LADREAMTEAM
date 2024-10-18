@@ -51,9 +51,9 @@ public class GoldenManagement : MonoBehaviour
 
     private void _UpdateUI(){
         if(currentCoins<=0){
-            _textCurrentCoins.text = "coins : 0" ;
+            _textCurrentCoins.text = "0" ;
         } else{
-            _textCurrentCoins.text = "coins :" + currentCoins;
+            _textCurrentCoins.text = currentCoins;
         }
     }
 
