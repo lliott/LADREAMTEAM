@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbWinner: 1
-  MenuFin: {fileID: 0}
+  MenuFin: {fileID: 7912930979014602973, guid: 531fe658222cd434f8fdc69fe7cb368a, type: 3}
   currentWinner: 0
 --- !u!19719996 &537311934
 TilemapCollider2D:
