@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 3776867233039785943}
   m_Layer: 18
   m_Name: skull(temp)
-  m_TagString: Untagged
+  m_TagString: Lemming
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,8 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  killSkullFallTimer: 7
-  killSkullTimer: 7
+  killSkullFallTimer: 0.8
+  killSkullTimer: 12
   currentTimerCounter: 0
   coyoteTimeDuration: 0.5
   groundCheckDistance: 0.3
