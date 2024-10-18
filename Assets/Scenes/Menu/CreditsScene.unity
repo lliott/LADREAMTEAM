@@ -589,6 +589,7 @@ MonoBehaviour:
     sceneIndex: 0
     buttonText: Main menu
     quit: 0
+    nextLevel: 0
   fadeToBlackTimer: 2
 --- !u!4 &491160765
 Transform:
@@ -679,9 +680,11 @@ MonoBehaviour:
 
     - Nat Heindryxcks
 
+    -
+    Margaux Ninot
 
-    Game
-    Designers :
+
+    Game Designers :
 
     - Simon Philippe
 
@@ -712,7 +715,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49
+  m_fontSize: 45.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
