@@ -11,11 +11,7 @@ public class KillZone : MonoBehaviour
             Animator lemmingAnimator = collision.GetComponent<Animator>();
             LemmingController lemmingController = collision.GetComponent<LemmingController>();
 
-            lemmingController.stopped = true;
-
-            lemmingAnimator.SetTrigger("isDying");
-
-            StartCoroutine(DeactivateAfterAnimation(lemmingAnimator, collision.gameObject));
+            collision.gameObject.SetActive(false);
         }
     }
 
