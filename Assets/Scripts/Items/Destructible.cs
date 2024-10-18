@@ -6,15 +6,15 @@ public class Destructible : MonoBehaviour
 {
     [Header("Coins for Items Only")]
     [SerializeField] private float goldPercentIncrease = 50;
-    public int objectPrice = 50 ;
+    public int objectPrice = 50;
 
     [Header("Skull prefab")]
     [SerializeField] private GameObject skull;
 
-    //anim
+    // Anim
     private Animator animator;
 
-    //Audio
+    // Audio
     private AudioSource _audio;
 
     private void Start()
@@ -22,42 +22,51 @@ public class Destructible : MonoBehaviour
         animator = GetComponent<Animator>();
         if (animator == null)
         {
-            Debug.LogError("Animator component not found on " + gameObject.name);
+            Debug.LogError("animator not found on " + gameObject.name);
         }
 
-        if (TryGetComponent<AudioSource>(out AudioSource audio)){
+        if (TryGetComponent<AudioSource>(out AudioSource audio))
+        {
             _audio = audio;
         }
     }
+
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(1)) // clic droit
+        if (Input.GetMouseButtonDown(1))
         {
             if (CompareTag("Object"))
             {
-                GoldenManagement.instance.IncreaseGolds(objectPrice*(int)goldPercentIncrease/100); //nb gold à voir 
+                GoldenManagement.instance.IncreaseGolds(objectPrice * (int)goldPercentIncrease / 100);
                 Destroy(gameObject);
 
             }
             else if (CompareTag("Lemming"))
             {
-                if (animator != null)
+                LemmingController lemming = GetComponent<LemmingController>();
+                if (lemming != null)
                 {
-                    animator.SetTrigger("transiSkull");
-                    if(_audio!=null){
-                        _audio.Play();
+                    bool isMovingRight = lemming.IsMovingRight;
+
+                    if (animator != null)
+                    {
+                        animator.SetTrigger("transiSkull");
+                        if (_audio != null)
+                        {
+                            _audio.Play();
+                        }
+                        StartCoroutine(DeactivateAfterAnimation(isMovingRight));
                     }
-                    StartCoroutine(DeactivateAfterAnimation());
                 }
                 else
                 {
-                    Debug.LogError("Animator component not found on " + gameObject.name);
+                    Debug.LogError("LemmingController component not found on " + gameObject.name);
                 }
             }
         }
     }
 
-    private IEnumerator DeactivateAfterAnimation()
+    private IEnumerator DeactivateAfterAnimation(bool isMovingRight)
     {
         float animationLength = GetAnimationClipLength(animator, "SkeletonToSkull");
 
@@ -70,7 +79,18 @@ public class Destructible : MonoBehaviour
 
         gameObject.SetActive(false);
 
-        Instantiate(skull, transform.position, transform.rotation);
+        GameObject instantiatedSkull = Instantiate(skull, transform.position, transform.rotation);
+
+        MoveSkull moveSkull = instantiatedSkull.GetComponent<MoveSkull>();
+
+        if (moveSkull != null)
+        {
+            moveSkull.SetDirection(isMovingRight);
+        }
+        else
+        {
+            Debug.LogError("MoveSkull component not found on skull prefab.");
+        }
     }
 
     private float GetAnimationClipLength(Animator animator, string clipName)
@@ -82,7 +102,6 @@ public class Destructible : MonoBehaviour
         }
 
         AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
-
         foreach (AnimationClip clip in clips)
         {
             if (clip.name == clipName)
