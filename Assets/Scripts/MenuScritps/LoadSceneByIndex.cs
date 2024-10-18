@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class ButtonManager : MonoBehaviour
     }
 
     public List<ButtonData> buttons = new List<ButtonData>();
+    [SerializeField] private float fadeToBlackTimer = 2f;
 
     // Audio
     private AudioSource _audio;
@@ -96,5 +98,11 @@ public class ButtonManager : MonoBehaviour
     #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
     #endif
+    }
+
+    private IEnumerator DeactivateAfterAnimation()
+    {
+        yield return new WaitForSeconds(fadeToBlackTimer);
+
     }
 }
