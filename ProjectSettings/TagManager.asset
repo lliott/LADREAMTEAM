@@ -5,18 +5,19 @@ TagManager:
   serializedVersion: 2
   tags:
   - Lemming
+  - Object
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Fan
   - Water
   - UI
   - Floor
   - Wall
   - Button
-  - 
-  - 
+  - Stairs
+  - KillZone
   - 
   - 
   - 
@@ -24,7 +25,7 @@ TagManager:
   - 
   - 
   - Lemming
-  - 
+  - Skull
   - 
   - 
   - 
