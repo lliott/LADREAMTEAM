@@ -42,6 +42,7 @@ public class LemmingController : MonoBehaviour
     private bool movingRight = true;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private int targetLayer;
 
 
     void Start()
@@ -83,6 +84,16 @@ public class LemmingController : MonoBehaviour
         FlipLemming();
         ResolveCollisions();
         KillLemmiFromFall();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        targetLayer = LayerMask.NameToLayer("KillZone");
+
+        if (collision.gameObject.layer == targetLayer)
+        {
+            animator.SetTrigger("transiSkull");
+        }
     }
 
     private void CheckIfGrounded()
