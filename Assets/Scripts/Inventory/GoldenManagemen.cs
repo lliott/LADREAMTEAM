@@ -53,7 +53,7 @@ public class GoldenManagement : MonoBehaviour
         if(currentCoins<=0){
             _textCurrentCoins.text = "0" ;
         } else{
-            _textCurrentCoins.text = currentCoins;
+            _textCurrentCoins.text = currentCoins.ToString();
         }
     }
 
