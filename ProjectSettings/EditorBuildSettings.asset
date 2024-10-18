@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/CreditsScene.unity
     guid: 8d0bd5a2a57c5e54e9a656487db4ad04
   - enabled: 1
-    path: Assets/Scenes/GP_Main.unity
-    guid: 53c2dfd8547014f47bd7ee1d6175e04b
+    path: Assets/Scenes/Menu/LevelSelector.unity
+    guid: 827ffa2ab883aaf419a4ba26301c70de
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/Menu/Options.unity
+    guid: fbe8c041fc3c91349b40935faa0efef3
   m_configObjects: {}
