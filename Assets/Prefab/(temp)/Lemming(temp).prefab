@@ -118,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 5345796919243684407}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.327, y: 0.38, z: 0}
+  m_LocalPosition: {x: 0.247, y: 0.503, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  killLemmiFallTimer: 1
+  killLemmiFallTimer: 1.2
   currentTimerCounter: 0
   coyoteTimeDuration: 0.5
   stopped: 0
@@ -307,7 +307,7 @@ MonoBehaviour:
   groundCheckPosition: {fileID: 8012613989766153361}
   groundCheckPosition2: {fileID: 4822149335221589918}
   grounded: 0
-  wallCheckDistance: 0.1
+  wallCheckDistance: 0.2
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 192
