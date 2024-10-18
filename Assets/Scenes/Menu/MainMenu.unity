@@ -534,6 +534,7 @@ GameObject:
   - component: {fileID: 549940787}
   - component: {fileID: 549940786}
   - component: {fileID: 549940785}
+  - component: {fileID: 549940788}
   m_Layer: 5
   m_Name: Level Select
   m_TagString: Untagged
@@ -643,6 +644,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549940783}
   m_CullTransparentMesh: 1
+--- !u!114 &549940788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549940783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d69d55d5b2d0e43bf8c5fd02dce573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minScale: {x: 1, y: 1, z: 1}
+  maxScale: {x: 1.02, y: 1.02, z: 1.02}
+  scalingSpeed: 1
+  startOnAwake: 1
 --- !u!1 &623240687
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,6 +761,7 @@ GameObject:
   - component: {fileID: 693704748}
   - component: {fileID: 693704747}
   - component: {fileID: 693704746}
+  - component: {fileID: 693704749}
   m_Layer: 5
   m_Name: Quit Game (button)
   m_TagString: Untagged
@@ -865,6 +883,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693704744}
   m_CullTransparentMesh: 1
+--- !u!114 &693704749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693704744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d69d55d5b2d0e43bf8c5fd02dce573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minScale: {x: 1, y: 1, z: 1}
+  maxScale: {x: 1.02, y: 1.02, z: 1.02}
+  scalingSpeed: 1
+  startOnAwake: 1
 --- !u!1 &702148238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1295,7 @@ GameObject:
   - component: {fileID: 1210067911}
   - component: {fileID: 1210067914}
   - component: {fileID: 1210067915}
+  - component: {fileID: 1210067916}
   m_Layer: 5
   m_Name: New Game (button)
   m_TagString: Untagged
@@ -1429,6 +1464,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1210067916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210067909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d69d55d5b2d0e43bf8c5fd02dce573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minScale: {x: 1, y: 1, z: 1}
+  maxScale: {x: 1.02, y: 1.02, z: 1.02}
+  scalingSpeed: 1
+  startOnAwake: 1
 --- !u!1 &1355511902
 GameObject:
   m_ObjectHideFlags: 0
