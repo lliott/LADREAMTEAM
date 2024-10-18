@@ -14,6 +14,7 @@ public class ButtonManager : MonoBehaviour
         public int sceneIndex;
         public string buttonText;
         public bool quit;
+        public bool nextLevel;
     }
 
     public List<ButtonData> buttons = new List<ButtonData>();
@@ -28,6 +29,10 @@ public class ButtonManager : MonoBehaviour
 
     void Start()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        int currentSceneIndex = currentScene.buildIndex;
+
         foreach (ButtonData buttonData in buttons)
         {
             // Set the button text
@@ -49,6 +54,10 @@ public class ButtonManager : MonoBehaviour
             {
                 buttonData.button.onClick.AddListener(() => QuitGame());
 
+            }
+            else if (buttonData.nextLevel == true) 
+            {
+                buttonData.button.onClick.AddListener(() => LoadSceneByIndex(currentSceneIndex + 1));
             }
             else {
 
@@ -102,6 +111,8 @@ public class ButtonManager : MonoBehaviour
 
     private IEnumerator DeactivateAfterAnimation()
     {
+
+
         yield return new WaitForSeconds(fadeToBlackTimer);
 
     }
