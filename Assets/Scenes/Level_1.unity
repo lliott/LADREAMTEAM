@@ -1292,7 +1292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &259674739
 Transform:
   m_ObjectHideFlags: 0
@@ -1323,7 +1323,7 @@ MonoBehaviour:
   pools:
   - tag: Lemming
     prefab: {fileID: 7283240314172663801, guid: 9d0c9052806454c4cb2cdf94302c9a98, type: 3}
-    size: 1
+    size: 15
 --- !u!1 &290925256
 GameObject:
   m_ObjectHideFlags: 0
@@ -24007,7 +24007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34cde7e4a7c05514d90ee22332ca27c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbWinner: 5
+  nbWinner: 10
   MenuFin: {fileID: 0}
   currentWinner: 0
 --- !u!483693784 &1185612293
@@ -33520,6 +33520,10 @@ PrefabInstance:
     - target: {fileID: 2195840147508217641, guid: 501b48b0972237741afd9487c198631d, type: 3}
       propertyPath: pools.Array.data[9].tag
       value: Lemming
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195840147508217641, guid: 501b48b0972237741afd9487c198631d, type: 3}
+      propertyPath: pools.Array.data[0].size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2195840147508217641, guid: 501b48b0972237741afd9487c198631d, type: 3}
       propertyPath: pools.Array.data[10].tag
