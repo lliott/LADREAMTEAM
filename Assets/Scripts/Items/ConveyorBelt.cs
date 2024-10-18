@@ -10,7 +10,7 @@ public class ConveyorBelt : MonoBehaviour
     private int DirX = 1;
     private bool sameDirX = true;
 
-    [SerializeField] private List<GameObject> lemmingsList = new List<GameObject>(); //lemmings sur le tapis
+    private List<GameObject> lemmingsList = new List<GameObject>(); //lemmings sur le tapis
 
     void Start(){
         InitSpeed = lemmingPrefab.GetComponent<LemmingController>().speed;
