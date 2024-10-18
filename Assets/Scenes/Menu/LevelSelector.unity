@@ -737,28 +737,24 @@ MonoBehaviour:
     sceneIndex: 0
     buttonText: Main menu
     quit: 0
-  - button: {fileID: 1227772793}
-    sceneIndex: 0
-    buttonText: Main menu
-    quit: 0
   - button: {fileID: 464366010}
-    sceneIndex: 0
+    sceneIndex: 4
     buttonText: Level 1
     quit: 0
   - button: {fileID: 1574247379}
-    sceneIndex: 0
+    sceneIndex: 5
     buttonText: Level 2
     quit: 0
   - button: {fileID: 1549066377}
-    sceneIndex: 0
+    sceneIndex: 6
     buttonText: Level 3
     quit: 0
   - button: {fileID: 1406966373}
-    sceneIndex: 0
+    sceneIndex: 7
     buttonText: Level 4
     quit: 0
   - button: {fileID: 374791654}
-    sceneIndex: 0
+    sceneIndex: 8
     buttonText: Level 5
     quit: 0
   fadeToBlackTimer: 2

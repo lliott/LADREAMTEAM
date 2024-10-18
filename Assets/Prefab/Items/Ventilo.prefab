@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7488519989527352693}
   - component: {fileID: 1015774615177736503}
   - component: {fileID: 8566620959221508299}
+  - component: {fileID: 7575601840277000652}
+  - component: {fileID: 8218347000688221867}
   m_Layer: 3
   m_Name: Ventilo
   m_TagString: Untagged
@@ -164,3 +166,32 @@ AreaEffector2D:
   m_ForceTarget: 0
   m_Drag: 0.5
   m_AngularDrag: 0
+--- !u!114 &7575601840277000652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8104676116314656238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7c7add47960db498eacd889ce3618b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorHoverTexture: {fileID: 2800000, guid: 00e035b71486af4459c3477118275316, type: 3}
+  defautCursor: {fileID: 2800000, guid: 931bd07aeddbb5b4a92909521612dde3, type: 3}
+--- !u!114 &8218347000688221867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8104676116314656238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329707e36a47d764fa220bfcecbc614f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldPercentIncrease: 50
+  objectPrice: 50
+  skull: {fileID: 0}

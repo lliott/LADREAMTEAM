@@ -1954,7 +1954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttons:
   - button: {fileID: 1210067911}
-    sceneIndex: 0
+    sceneIndex: 4
     buttonText: Start Game
     quit: 0
   - button: {fileID: 549940785}
