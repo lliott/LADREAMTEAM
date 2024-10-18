@@ -423,6 +423,7 @@ GameObject:
   - component: {fileID: 549940787}
   - component: {fileID: 549940786}
   - component: {fileID: 549940785}
+  - component: {fileID: 549940788}
   m_Layer: 5
   m_Name: Level Select
   m_TagString: Untagged
@@ -532,6 +533,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549940783}
   m_CullTransparentMesh: 1
+--- !u!114 &549940788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549940783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d69d55d5b2d0e43bf8c5fd02dce573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minScale: {x: 1, y: 1, z: 1}
+  maxScale: {x: 1.02, y: 1.02, z: 1.02}
+  scalingSpeed: 1
+  startOnAwake: 1
 --- !u!1 &623240687
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minScale: {x: 1, y: 1, z: 1}
   maxScale: {x: 1.1, y: 1.1, z: 1.1}
-  scalingSpeed: 1.8
+  scalingSpeed: 1.2
   startOnAwake: 1
 --- !u!1 &693704744
 GameObject:
@@ -633,6 +650,7 @@ GameObject:
   - component: {fileID: 693704748}
   - component: {fileID: 693704747}
   - component: {fileID: 693704746}
+  - component: {fileID: 693704749}
   m_Layer: 5
   m_Name: Quit Game (button)
   m_TagString: Untagged
@@ -754,6 +772,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693704744}
   m_CullTransparentMesh: 1
+--- !u!114 &693704749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693704744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d69d55d5b2d0e43bf8c5fd02dce573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minScale: {x: 1, y: 1, z: 1}
+  maxScale: {x: 1.02, y: 1.02, z: 1.02}
+  scalingSpeed: 1
+  startOnAwake: 1
 --- !u!1 &702148238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,6 +1182,7 @@ GameObject:
   - component: {fileID: 1210067913}
   - component: {fileID: 1210067912}
   - component: {fileID: 1210067911}
+  - component: {fileID: 1210067914}
   m_Layer: 5
   m_Name: New Game (button)
   m_TagString: Untagged
@@ -1257,6 +1292,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210067909}
   m_CullTransparentMesh: 1
+--- !u!114 &1210067914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210067909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d69d55d5b2d0e43bf8c5fd02dce573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minScale: {x: 1, y: 1, z: 1}
+  maxScale: {x: 1.02, y: 1.02, z: 1.02}
+  scalingSpeed: 1
+  startOnAwake: 1
 --- !u!1 &1355511902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,22 +2008,27 @@ MonoBehaviour:
     sceneIndex: 4
     buttonText: Start Game
     quit: 0
+    nextLevel: 0
   - button: {fileID: 549940785}
     sceneIndex: 2
     buttonText: Level Selector
     quit: 0
+    nextLevel: 0
   - button: {fileID: 693704746}
     sceneIndex: 0
     buttonText: Quit Game
     quit: 1
+    nextLevel: 0
   - button: {fileID: 205463496}
     sceneIndex: 1
     buttonText: Credits
     quit: 0
+    nextLevel: 0
   - button: {fileID: 1733346661}
     sceneIndex: 3
     buttonText: Options
     quit: 0
+    nextLevel: 0
   fadeToBlackTimer: 2
 --- !u!1 &1828282686
 GameObject:
