@@ -30,14 +30,22 @@ public class MoveSkull : MonoBehaviour
     public bool walled = false;
     private int wallSide;
 
+    [Header("Rotation Settings")]
+    [SerializeField] private float rotationSpeed = 360f;
+    [SerializeField] private Transform skullSprite;
+
     private Collider2D lemmingCollider;
     private bool movingRight = true;
-    private SpriteRenderer spriteRenderer;
     private Vector3 moveDirection = Vector3.zero;
+    private int targetLayer;
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (skullSprite == null)
+        {
+            Debug.LogError("SkullSprite reference is not assigned in the Inspector.");
+        }
+
         lemmingCollider = GetComponent<Collider2D>();
 
         currentTimerCounter = 0;
@@ -70,6 +78,7 @@ public class MoveSkull : MonoBehaviour
         ResolveCollisions();
         KillSkullFromFall();
         KillSkullAfterTimer();
+        RotateSkull();
     }
 
     private void CheckIfGrounded()
@@ -84,9 +93,9 @@ public class MoveSkull : MonoBehaviour
         {
             grounded = true;
             coyoteTimeCounter = 0f;
-
-        } else {
-
+        }
+        else
+        {
             grounded = false;
             if (wasGrounded)
             {
@@ -138,9 +147,9 @@ public class MoveSkull : MonoBehaviour
             moveDirection.Set(movingRight ? speed * Time.fixedDeltaTime : -speed * Time.fixedDeltaTime, 0, 0);
 
             transform.position += moveDirection;
-
-        } else {
-
+        }
+        else
+        {
             return;
         }
     }
@@ -166,6 +175,16 @@ public class MoveSkull : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        targetLayer = LayerMask.NameToLayer("KillZone");
+
+        if (collision.gameObject.layer == targetLayer)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void ChangeDirection()
     {
         movingRight = !movingRight;
@@ -181,9 +200,9 @@ public class MoveSkull : MonoBehaviour
         if (!grounded)
         {
             currentTimerCounter += Time.deltaTime;
-
-        } else {
-
+        }
+        else
+        {
             currentTimerCounter = 0f;
         }
 
@@ -191,7 +210,6 @@ public class MoveSkull : MonoBehaviour
         {
             canKillSkull = true;
         }
-
     }
 
     private void KillSkullFromFall()
@@ -213,5 +231,19 @@ public class MoveSkull : MonoBehaviour
     public void KillSkull()
     {
         Destroy(gameObject);
+    }
+
+
+    private void RotateSkull()
+    {
+        if (skullSprite == null)
+            return;
+
+        // clockwise (1) for right, counter-clockwise (-1) for left
+        float rotationDirection = movingRight ? -1f : 1f;
+
+        float rotationAmount = rotationSpeed * Time.fixedDeltaTime * rotationDirection;
+
+        skullSprite.Rotate(0f, 0f, rotationAmount);
     }
 }

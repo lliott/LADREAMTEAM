@@ -86,13 +86,13 @@ public class LemmingController : MonoBehaviour
         KillLemmiFromFall();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         targetLayer = LayerMask.NameToLayer("KillZone");
 
         if (collision.gameObject.layer == targetLayer)
         {
-            animator.SetTrigger("transiSkull");
+            animator.SetTrigger("isDying");
         }
     }
 
