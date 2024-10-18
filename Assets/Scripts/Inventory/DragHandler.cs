@@ -11,6 +11,9 @@ public class DragHandler : MonoBehaviour
     [HideInInspector] public GameObject draggedObject { get; private set; }
     private bool isDragging = false;
 
+    //Audio
+    private AudioSource _audio;
+
     private void Start()
     {
         if (instance == null)
@@ -24,6 +27,10 @@ public class DragHandler : MonoBehaviour
 
         if(zone==null){
             zone = transform.parent.GetComponent<RectTransform>();
+        }
+
+        if (TryGetComponent<AudioSource>(out AudioSource audio)){
+            _audio = audio;
         }
     }
 
@@ -74,6 +81,9 @@ public class DragHandler : MonoBehaviour
 
     void StopDragging()
     {
+        if(_audio!=null){
+            _audio.Play();
+        }
         isDragging = false;
         draggedObject = null;
     }

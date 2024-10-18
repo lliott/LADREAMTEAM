@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LemmingController : MonoBehaviour
 {
     [Header("Lemmies")]
-    [SerializeField] private float speed = 5f;
+    public float speed = 5f;
     [SerializeField] private float killLemmiFallTimer = 7f;
     private bool canKillLemmi = false;
     [ReadOnly]
@@ -13,10 +14,15 @@ public class LemmingController : MonoBehaviour
     [SerializeField] private float coyoteTimeDuration = 0.5f;
     private float coyoteTimeCounter = 0f;
 
+    [Header("Movement")]
+    public bool stopped = false;
+    public bool IsMovingRight => movingRight;
+
     [Header("Ground Detection")]
     [SerializeField] private float groundCheckDistance = 0.3f;
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private Transform groundCheckPosition;
+    [SerializeField] private Transform groundCheckPosition2;
     public bool grounded = false;
     private bool wasGrounded = false;
 
@@ -24,22 +30,39 @@ public class LemmingController : MonoBehaviour
     [SerializeField] private float wallCheckDistance = 0.3f;
     [SerializeField] private LayerMask wallLayerMask;
     [SerializeField] private Transform wallCheckPosition;
+    [SerializeField] private Transform wallCheckPosition2;
     public bool walled = false;
     private int wallSide;
 
+    //Fan
+    [HideInInspector] public bool flying = false; // ds le ventilo
+    private bool wasFlying = false; 
+
+    [HideInInspector] public Vector3 moveDirection = Vector3.zero; // appelé ds ConveyorBelt
     private Collider2D lemmingCollider;
-    private bool movingRight = true;
+    private bool movingRight;
     private SpriteRenderer spriteRenderer;
-    private Vector3 moveDirection = Vector3.zero;
+    private Animator animator;
+    private int targetLayer;
+    private bool dying;
+
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         lemmingCollider = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
+
+        if (animator == null)
+        {
+            Debug.LogError("Animator component not found on " + gameObject.name);
+        }
     }
 
     private void OnEnable()
     {
+        dying = false;
+        stopped = false;
         currentTimerCounter = 0;
         grounded = false;
         canKillLemmi = false;
@@ -64,70 +87,119 @@ public class LemmingController : MonoBehaviour
         FlipLemming();
         ResolveCollisions();
         KillLemmiFromFall();
+
+        if (dying)
+        {
+            animator.SetBool("isFalling", false);
+            animator.SetBool("isWalking", false);
+
+            animator.SetTrigger("isDying");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        targetLayer = LayerMask.NameToLayer("KillZone");
+
+        if (collision.gameObject.layer == targetLayer)
+        {
+            animator.SetTrigger("isDying");
+        }
     }
 
     private void CheckIfGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(groundCheckPosition.position, Vector2.down, groundCheckDistance, groundLayerMask);
+        RaycastHit2D hit1 = Physics2D.Raycast(groundCheckPosition.position, Vector2.down, groundCheckDistance, groundLayerMask);
+        RaycastHit2D hit2 = Physics2D.Raycast(groundCheckPosition2.position, Vector2.down, groundCheckDistance, groundLayerMask);
 
         Debug.DrawRay(groundCheckPosition.position, Vector2.down * groundCheckDistance, Color.red);
+        Debug.DrawRay(groundCheckPosition2.position, Vector2.down * groundCheckDistance, Color.red);
 
-        if (hit.collider != null)
+        if (hit1.collider != null || hit2.collider != null)
         {
+            animator.SetBool("isFalling", false);
             grounded = true;
             coyoteTimeCounter = 0f;
-
-        } else {
-
+        }
+        else
+        {
+            animator.SetBool("isFalling", true);
             grounded = false;
             if (wasGrounded)
             {
                 coyoteTimeCounter = coyoteTimeDuration;
             }
         }
+
         wasGrounded = grounded;
     }
 
     private void CheckIfWalled()
     {
         Vector2[] directions = { Vector2.left, Vector2.right };
-
         walled = false;
 
-        foreach (Vector2 direction in directions)
+        Transform[] wallCheckPositions = { wallCheckPosition, wallCheckPosition2 };
+
+        foreach (Transform wallCheckPosition in wallCheckPositions)
         {
-            RaycastHit2D hit = Physics2D.Raycast(wallCheckPosition.position, direction, wallCheckDistance, wallLayerMask);
-
-            Debug.DrawRay(wallCheckPosition.position, direction * wallCheckDistance, Color.blue);
-
-            if (hit.collider != null)
+            foreach (Vector2 direction in directions)
             {
-                walled = true;
+                RaycastHit2D hit = Physics2D.Raycast(wallCheckPosition.position, direction, wallCheckDistance, wallLayerMask);
 
-                wallSide = direction == Vector2.left ? -1 : 1;
-                break;
+                Debug.DrawRay(wallCheckPosition.position, direction * wallCheckDistance, Color.blue);
+
+                if (hit.collider != null)
+                {
+                    walled = true;
+                    wallSide = direction == Vector2.left ? -1 : 1;
+                    break; // Exit inner loop
+                }
             }
+
+            if (walled)
+                break; // Exit outer loop
         }
     }
 
     private void MoveLemming()
     {
-        if (walled)
+        if (!stopped)
         {
-            ChangeDirection();
-            walled = false;
+            if (walled)
+            {
+                ChangeDirection();
+                walled = false;
+            }
+
+            if (grounded || (!grounded && coyoteTimeCounter > 0f))
+            {
+                moveDirection.Set(movingRight ? speed * Time.fixedDeltaTime : -speed * Time.fixedDeltaTime, 0, 0);
+
+                animator.SetBool("isFalling", false);
+                animator.SetBool("isWalking", true);
+                transform.position += moveDirection;
+
+            }
+            else if (flying)
+            {
+                moveDirection.Set(movingRight ? speed * Time.fixedDeltaTime : -speed * Time.fixedDeltaTime, 0, 0);
+
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isFalling", true);
+                transform.position += moveDirection;
+
+                wasFlying = true;
+            }
+            else
+            {
+                animator.SetBool("isWalking", false);
+                return;
+            }
+
         }
+        else { return; }
 
-        if (grounded || (!grounded && coyoteTimeCounter > 0f))
-        {
-            moveDirection.Set(movingRight ? speed * Time.fixedDeltaTime : -speed * Time.fixedDeltaTime, 0, 0);
-
-            transform.position += moveDirection;
-
-        } else {
-
-            return;
-        }
     }
 
     private void ResolveCollisions()
@@ -151,8 +223,8 @@ public class LemmingController : MonoBehaviour
         }
     }
 
-
-    private void ChangeDirection()
+    //Appelé ds ConveyorBelt
+    public void ChangeDirection()
     {
         movingRight = !movingRight;
     }
@@ -164,12 +236,13 @@ public class LemmingController : MonoBehaviour
 
     private void KillLemmiCondition()
     {
-        if (!grounded)
+        if (!grounded && !flying)
         {
             currentTimerCounter += Time.deltaTime;
 
-        } else {
-
+        }
+        else if (grounded)
+        {
             currentTimerCounter = 0f;
         }
 
@@ -181,14 +254,29 @@ public class LemmingController : MonoBehaviour
 
     private void KillLemmiFromFall()
     {
-        if (grounded && canKillLemmi)
+        if ((grounded && canKillLemmi) && !wasFlying)
         {
-            KillLemmi();
+            StartCoroutine(WaitForXSecondsAndKill(0.5f));
+        }
+
+        if (grounded && wasFlying)
+        {
+            wasFlying = false;
         }
     }
 
     public void KillLemmi()
     {
         gameObject.SetActive(false);
+    }
+
+    private IEnumerator WaitForXSecondsAndKill(float seconds)
+    {
+        stopped = true;
+        dying = true;
+
+        yield return new WaitForSeconds(seconds);
+
+        KillLemmi();
     }
 }
