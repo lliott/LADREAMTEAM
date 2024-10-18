@@ -10,14 +10,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Fan
   - Water
   - UI
   - Floor
   - Wall
   - Button
   - Stairs
-  - 
+  - KillZone
   - 
   - 
   - 

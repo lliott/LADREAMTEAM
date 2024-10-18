@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class MoveSkull : MonoBehaviour
 {
@@ -30,20 +31,21 @@ public class MoveSkull : MonoBehaviour
     public bool walled = false;
     private int wallSide;
 
+    [Header("Rotation Settings")]
+    [SerializeField] private float rotationSpeed = 360f;
+    [SerializeField] private Transform skullSprite;
+
     private Collider2D lemmingCollider;
     private bool movingRight = true;
-    private SpriteRenderer spriteRenderer;
     private Vector3 moveDirection = Vector3.zero;
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         lemmingCollider = GetComponent<Collider2D>();
 
         currentTimerCounter = 0;
         grounded = false;
         canKillSkull = false;
-        movingRight = true;
     }
 
     private void Update()
@@ -65,11 +67,12 @@ public class MoveSkull : MonoBehaviour
     {
         CheckIfGrounded();
         CheckIfWalled();
-        MoveLemming();
-        FlipLemming();
+        MoveSkullMovement();
+        FlipSkull();
         ResolveCollisions();
         KillSkullFromFall();
         KillSkullAfterTimer();
+        RotateSkull(); // Rotate only the sprite
     }
 
     private void CheckIfGrounded()
@@ -84,9 +87,9 @@ public class MoveSkull : MonoBehaviour
         {
             grounded = true;
             coyoteTimeCounter = 0f;
-
-        } else {
-
+        }
+        else
+        {
             grounded = false;
             if (wasGrounded)
             {
@@ -104,13 +107,13 @@ public class MoveSkull : MonoBehaviour
 
         Transform[] wallCheckPositions = { wallCheckPosition, wallCheckPosition2 };
 
-        foreach (Transform wallCheckPosition in wallCheckPositions)
+        foreach (Transform wallCheckPos in wallCheckPositions)
         {
             foreach (Vector2 direction in directions)
             {
-                RaycastHit2D hit = Physics2D.Raycast(wallCheckPosition.position, direction, wallCheckDistance, wallLayerMask);
+                RaycastHit2D hit = Physics2D.Raycast(wallCheckPos.position, direction, wallCheckDistance, wallLayerMask);
 
-                Debug.DrawRay(wallCheckPosition.position, direction * wallCheckDistance, Color.blue);
+                Debug.DrawRay(wallCheckPos.position, direction * wallCheckDistance, Color.blue);
 
                 if (hit.collider != null)
                 {
@@ -125,7 +128,7 @@ public class MoveSkull : MonoBehaviour
         }
     }
 
-    private void MoveLemming()
+    private void MoveSkullMovement()
     {
         if (walled)
         {
@@ -135,13 +138,10 @@ public class MoveSkull : MonoBehaviour
 
         if (grounded || (!grounded && coyoteTimeCounter > 0f))
         {
-            moveDirection.Set(movingRight ? speed * Time.fixedDeltaTime : -speed * Time.fixedDeltaTime, 0, 0);
+            float moveAmount = movingRight ? speed * Time.fixedDeltaTime : -speed * Time.fixedDeltaTime;
+            moveDirection.Set(moveAmount, 0, 0);
 
             transform.position += moveDirection;
-
-        } else {
-
-            return;
         }
     }
 
@@ -166,12 +166,12 @@ public class MoveSkull : MonoBehaviour
         }
     }
 
-    private void ChangeDirection()
+    public void ChangeDirection()
     {
         movingRight = !movingRight;
     }
 
-    private void FlipLemming()
+    private void FlipSkull()
     {
         transform.rotation = movingRight ? Quaternion.identity : Quaternion.Euler(0f, 180f, 0f);
     }
@@ -181,9 +181,9 @@ public class MoveSkull : MonoBehaviour
         if (!grounded)
         {
             currentTimerCounter += Time.deltaTime;
-
-        } else {
-
+        }
+        else
+        {
             currentTimerCounter = 0f;
         }
 
@@ -191,7 +191,6 @@ public class MoveSkull : MonoBehaviour
         {
             canKillSkull = true;
         }
-
     }
 
     private void KillSkullFromFall()
@@ -213,5 +212,33 @@ public class MoveSkull : MonoBehaviour
     public void KillSkull()
     {
         Destroy(gameObject);
+    }
+
+    private void RotateSkull()
+    {
+        if (skullSprite == null)
+            return;
+
+        if (movingRight)
+        {
+            float rotationDirection = movingRight ? -1f : 1f;
+
+            float rotationAmount = rotationSpeed * Time.fixedDeltaTime * rotationDirection;
+
+            skullSprite.Rotate(0f, 0f, rotationAmount);
+
+        } else {
+
+            float rotationDirection = movingRight ? 1f : -1f;
+
+            float rotationAmount = rotationSpeed * Time.fixedDeltaTime * rotationDirection;
+
+            skullSprite.Rotate(0f, 0f, rotationAmount);
+        }
+    }
+
+    public void SetDirection(bool isMovingRight)
+    {
+        movingRight = isMovingRight;
     }
 }
