@@ -361,6 +361,7 @@ MonoBehaviour:
     sceneIndex: 0
     buttonText: Main menu
     quit: 0
+    nextLevel: 0
   fadeToBlackTimer: 2
 --- !u!4 &491160765
 Transform:
@@ -769,8 +770,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19, y: -21}
-  m_SizeDelta: {x: 1012.3907, y: 669.1685}
+  m_AnchoredPosition: {x: -26.5759, y: -12.4771}
+  m_SizeDelta: {x: 1126.0295, y: 652.1227}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1654726405
 MonoBehaviour:
@@ -797,13 +798,15 @@ MonoBehaviour:
     - "Right click" to destroy your minions or
     apparitions,
 
-    (destroyed minions leave behind their head)
+    (gold used for apparitions are refunded when destroyed)
 
-    - "Mouse wheel"
-    to rotate apparitions,
+    (destroyed
+    minions leave behind their head)
 
-    - "Left click" to select your apparitions from your
-    scroll.'
+    - "Mouse wheel" to rotate apparitions,
+
+    -
+    "Left click" to select your apparitions from your scroll.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5fbcfaa68fe88504c993d0c699c60f20, type: 2}
   m_sharedMaterial: {fileID: 4936467274190998469, guid: 5fbcfaa68fe88504c993d0c699c60f20, type: 2}
@@ -830,7 +833,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 71.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
