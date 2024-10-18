@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7240951620452419288}
   - component: {fileID: 106703430509978062}
   - component: {fileID: 7716000969998567548}
+  - component: {fileID: 1983512535101335257}
   m_Layer: 6
   m_Name: fallingFloor
   m_TagString: Untagged
@@ -173,3 +174,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whoTouchedMe: 0
   theyTouchedMe: 2
+--- !u!114 &1983512535101335257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7242017206474464784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329707e36a47d764fa220bfcecbc614f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldPercentIncrease: 50
+  objectPrice: 30
