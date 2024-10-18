@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 1178472627483961261}
   - component: {fileID: 8659970832784522160}
   - component: {fileID: 3776867233039785943}
+  - component: {fileID: 6927858880615077361}
   m_Layer: 18
   m_Name: skull(temp)
   m_TagString: Lemming
@@ -110,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  killSkullFallTimer: 0.8
+  killSkullFallTimer: 1
   killSkullTimer: 13
   currentTimerCounter: 0
   coyoteTimeDuration: 0.5
@@ -137,7 +138,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120533686035275991}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -175,6 +176,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.74, y: 0.63}
   m_EdgeRadius: 0
+--- !u!58 &6927858880615077361
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120533686035275991}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.04691875, y: 0.007819831}
+  serializedVersion: 2
+  m_Radius: 0.33578497
 --- !u!1 &3966220815428063847
 GameObject:
   m_ObjectHideFlags: 0

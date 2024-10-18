@@ -97,7 +97,6 @@ public class Destructible : MonoBehaviour
     {
         if (animator == null || animator.runtimeAnimatorController == null)
         {
-            Debug.LogError("Animator or Animator Controller is not assigned.");
             return 0f;
         }
 
