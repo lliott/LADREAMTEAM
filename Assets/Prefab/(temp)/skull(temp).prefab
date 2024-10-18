@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   killSkullFallTimer: 0.8
-  killSkullTimer: 12
+  killSkullTimer: 13
   currentTimerCounter: 0
   coyoteTimeDuration: 0.5
   groundCheckDistance: 0.3
