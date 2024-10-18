@@ -119,11 +119,17 @@ public class DoorButton : MonoBehaviour
 
     private void OpenDoor()
     {
-        door.SetActive(false);
+        //door.SetActive(false);
+        door.GetComponent<Collider2D>().enabled = false;
+       
+        door.GetComponent<Animator>().SetBool("Open",true);
     }
 
     private void CloseDoor()
     {
-        door.SetActive(true);
+        //door.SetActive(true);
+        door.GetComponent<Collider2D>().enabled = true;
+        door.GetComponent<Animator>().SetBool("Open",false);
+
     }
 }
